@@ -1,0 +1,29 @@
+.placeHolder {
+ clear: both;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  min-height: 300px;
+  display: flex;
+}
+
+.placeHolder-left {
+  clear: both;
+  flex-direction: row;
+  justify-content: flex-start;
+  width: 100%;
+  min-height: 300px;
+  display: flex;
+}
+
+.input {
+    &-field {
+      height: 80px !important;
+      &_error {
+        padding: 4px 0px;
+      }
+    }
+  }
+
+

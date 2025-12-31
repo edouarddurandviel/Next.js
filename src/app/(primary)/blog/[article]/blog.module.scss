@@ -1,0 +1,13 @@
+.BlogContainer {
+  clear: both;
+  flex-direction: row;
+  justify-content: flex-start;
+  width: 100%;
+  min-height: 300px;
+  display: flex;
+
+  main {
+    width: 100%;
+  }
+}
+
