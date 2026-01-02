@@ -1,6 +1,6 @@
-'use client';
-import { Statistiques } from 'edouard/types/types';
-import { useEffect, useState } from 'react';
+"use client";
+import { Statistiques } from "@app/types/types";
+import { useEffect, useState } from "react";
 
 const AnalyticsCompanyPage = ({ params }: { params: Promise<{ id: string }> }) => {
   const [stat, setCompany] = useState<Statistiques[]>();
@@ -10,7 +10,7 @@ const AnalyticsCompanyPage = ({ params }: { params: Promise<{ id: string }> }) =
   useEffect(() => {
     urlParams.then((param) => {
       fetch(`/api/analytics/${param.id}`, {
-        cache: 'no-store',
+        cache: "no-store",
       })
         .then((res) => res.json())
         .then((data: Statistiques[]) => {
@@ -33,7 +33,7 @@ const AnalyticsCompanyPage = ({ params }: { params: Promise<{ id: string }> }) =
               gender: {e.gender} - age: {e.age} - from: {e.country}
             </div>
           ))) ||
-          'Loading...'}
+          "Loading..."}
       </div>
     </>
   );

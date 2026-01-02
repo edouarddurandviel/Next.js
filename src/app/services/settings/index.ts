@@ -1,5 +1,3 @@
-export async function createSettings(data: any){
-
-    // faits ton job
-
+export async function createSettings(data: any) {
+  // faits ton job
 }

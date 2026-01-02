@@ -1,4 +1,4 @@
-import { NextRequest, NextResponse } from 'next/server';
+import { NextRequest, NextResponse } from "next/server";
 
 export type Middleware = (req: NextRequest) => NextResponse | void | Promise<NextResponse | void>;
 export type Routes = {

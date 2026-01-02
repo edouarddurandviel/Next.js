@@ -1,17 +1,17 @@
-'use server';
-import { errorMessages } from 'edouard/schemas/errorMessages';
-import { userSchemas } from 'edouard/schemas/user';
-import { getUserWithEmail } from 'edouard/services/user';
-import { UserSignin } from 'edouard/types/types';
-import * as argon2 from 'argon2';
-import * as jwt from 'jsonwebtoken';
-import { cookies } from 'next/headers';
+"use server";
+import { errorMessages } from "@app/schemas/errorMessages";
+import { userSchemas } from "@app/schemas/user";
+import { getUserWithEmail } from "@app/services/user";
+import { UserSignin } from "@app/types/types";
+import * as argon2 from "argon2";
+import * as jwt from "jsonwebtoken";
+import { cookies } from "next/headers";
 
 export default async function signInAction(formData: FormData) {
   const user = await userSchemas.validate(
     {
-      email: formData.get('email'),
-      password: formData.get('password'),
+      email: formData.get("email"),
+      password: formData.get("password"),
     },
     { abortEarly: false },
   );
@@ -31,8 +31,8 @@ export default async function signInAction(formData: FormData) {
   } else {
     const fetchedUser = await getUserWithEmail(data);
 
-    console.log(fetchedUser)
-    console.log("user"+user)
+    console.log(fetchedUser);
+    console.log("user" + user);
 
     if (fetchedUser) {
       if (await argon2.verify(fetchedUser.password, user.value.password)) {
@@ -41,14 +41,14 @@ export default async function signInAction(formData: FormData) {
         };
 
         const secret = user.value.password;
-        const token = jwt.sign(payload, secret, { expiresIn: '1h' });
+        const token = jwt.sign(payload, secret, { expiresIn: "1h" });
 
         const cookieStore = await cookies();
-        cookieStore.set('jwt', token, {
+        cookieStore.set("jwt", token, {
           httpOnly: true,
           secure: true,
           maxAge: 60 * 60 * 24 * 7, // One week
-          path: '/',
+          path: "/",
         });
 
         const data: UserSignin = {
@@ -59,20 +59,20 @@ export default async function signInAction(formData: FormData) {
         return { user: data };
       } else {
         return {
-          error: [{ key: 'password', message: 'Wrong password' }],
+          error: [{ key: "password", message: "Wrong password" }],
           user: data,
         };
       }
     } else if (fetchedUser && !Array.isArray(fetchedUser)) {
       return {
-        error: [{ key: 'Credentials', message: 'Wrong email or password' }],
+        error: [{ key: "Credentials", message: "Wrong email or password" }],
         user: data,
       };
     }
   }
 
   return {
-    error: [{ key: 'Credentials', message: 'Wrong email or password' }],
+    error: [{ key: "Credentials", message: "Wrong email or password" }],
     user: data,
   };
 }

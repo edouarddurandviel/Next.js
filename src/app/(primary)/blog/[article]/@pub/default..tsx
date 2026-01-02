@@ -1,7 +1,7 @@
-import { Metadata } from 'next';
+import { Metadata } from "next";
 
 export async function generateMetadata(): Promise<Metadata> {
-  const article = await { title: 'Nextjs', content: 'Framework' };
+  const article = await { title: "Nextjs", content: "Framework" };
 
   return {
     title: article.title,

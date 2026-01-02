@@ -1,4 +1,4 @@
-@use '../../styles/base.scss';
+@use "../../styles/base.scss";
 
 .HeaderApi {
   margin: 0;
@@ -42,12 +42,12 @@
       }
 
       &:hover {
-         color: base.$primary;
+        color: base.$primary;
       }
     }
 
     & .current {
-       color: base.$primary;
+      color: base.$primary;
     }
   }
 }

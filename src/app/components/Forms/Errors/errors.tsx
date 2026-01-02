@@ -1,5 +1,5 @@
-'use client';
-import { UserErrors } from 'edouard/types/types';
+"use client";
+import { UserErrors } from "@app/types/types";
 
 const Errors = ({ errors }: { errors: UserErrors[] }): React.ReactNode => {
   return errors.map((e, index) => (

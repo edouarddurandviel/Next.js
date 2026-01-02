@@ -1,8 +1,8 @@
-import { Metadata } from 'next';
+import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: 'Home page',
-  description: 'Some description of the page',
+  title: "Home page",
+  description: "Some description of the page",
 };
 
 const Home = () => {

@@ -1,18 +1,18 @@
-import { createSlice } from '@reduxjs/toolkit';
-import * as thunk from './thunks';
-import type { UserAccount } from './interfaces';
-import { resetAppAction } from './actions';
+import { createSlice } from "@reduxjs/toolkit";
+import * as thunk from "./thunks";
+import type { UserAccount } from "./interfaces";
+import { resetAppAction } from "./actions";
 
 const initialState: UserAccount = {
   userLogin: {
     user: {
-      email: '',
-      password: '',
+      email: "",
+      password: "",
     },
     error: [
       {
-        message: '',
-        key: '',
+        message: "",
+        key: "",
       },
     ],
   },
@@ -23,19 +23,19 @@ const initialState: UserAccount = {
 };
 
 export const userSlices = createSlice({
-  name: 'user',
+  name: "user",
   initialState,
   reducers: {
     resetLogin: (state) => {
       state.userLogin = {
         user: {
-          email: '',
-          password: '',
+          email: "",
+          password: "",
         },
         error: [
           {
-            message: '',
-            key: '',
+            message: "",
+            key: "",
           },
         ],
       };

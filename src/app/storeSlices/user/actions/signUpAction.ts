@@ -1,9 +1,9 @@
-'use server';
-import { errorMessages } from 'edouard/schemas/errorMessages';
-import { schema } from 'edouard/schemas/account';
-import type { UserAccount } from 'edouard/types/types';
-import { signUp } from 'edouard/services/user';
-import * as argon2 from 'argon2';
+"use server";
+import { errorMessages } from "@app/schemas/errorMessages";
+import { schema } from "@app/schemas/account";
+import type { UserAccount } from "@app/types/types";
+import { signUp } from "@app/services/user";
+import * as argon2 from "argon2";
 
 export default async function signUpAction(
   previousState: UserAccount | undefined,
@@ -12,8 +12,8 @@ export default async function signUpAction(
   try {
     const user = await schema.validate(
       {
-        email: formData.get('email'),
-        password: formData.get('password'),
+        email: formData.get("email"),
+        password: formData.get("password"),
       },
       { abortEarly: false },
     );

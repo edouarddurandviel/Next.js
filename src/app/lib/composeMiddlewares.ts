@@ -1,5 +1,5 @@
-import { Middleware } from 'edouard/types/types';
-import { NextRequest, NextResponse } from 'next/server';
+import { Middleware } from "@app/types/types";
+import { NextRequest, NextResponse } from "next/server";
 
 // return NextResponse | Promise<NextResponse>
 // actions processed before request get to the routerApi. Request are immutable.
@@ -17,10 +17,10 @@ export const compose = (middlewares: Middleware[]): Middleware => {
 };
 
 export const authMiddleware = (req: NextRequest): NextResponse => {
-  const token = req.cookies.get('user');
+  const token = req.cookies.get("user");
   // check registration token and vlidity
   if (!token) {
-    return NextResponse.redirect(new URL('/login', req.url));
+    return NextResponse.redirect(new URL("/login", req.url));
   }
   return NextResponse.next();
 };
@@ -32,9 +32,9 @@ export const analyticsMiddleware = (req: NextRequest): NextResponse => {
 };
 
 export const adminMiddleware = (req: NextRequest): NextResponse => {
-  const role = req.cookies.get('role_id');
+  const role = req.cookies.get("role_id");
   if (role) {
-    return NextResponse.redirect(new URL('/not-authorized', req.url));
+    return NextResponse.redirect(new URL("/not-authorized", req.url));
   }
   return NextResponse.next();
 };

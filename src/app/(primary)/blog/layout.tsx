@@ -1,5 +1,5 @@
-import AsideMenu from 'edouard/components/AsideMenu';
-import scss from './[article]/blog.module.scss';
+import AsideMenu from "@app/components/AsideMenu";
+import scss from "./[article]/blog.module.scss";
 
 const BlogLayout = ({
   children,

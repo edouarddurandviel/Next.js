@@ -1,8 +1,8 @@
-import { Metadata } from 'next';
-import Link from 'next/link';
+import { Metadata } from "next";
+import Link from "next/link";
 
 export async function generateMetadata(): Promise<Metadata> {
-  const article = await { title: 'article 1', content: 'content' };
+  const article = await { title: "article 1", content: "content" };
   return {
     title: article.title,
     description: article.content,
@@ -11,11 +11,11 @@ export async function generateMetadata(): Promise<Metadata> {
 
 const Images = async ({ params }: { params: Promise<{ article: string }> }) => {
   const { article } = await params;
-  const articleContent = await { title: 'article 1', content: 'content' };
+  const articleContent = await { title: "article 1", content: "content" };
 
   return (
     <main>
-      <Link key={1} href='/blog'>
+      <Link key={1} href="/blog">
         back
       </Link>
       <h1>Article {article}</h1>

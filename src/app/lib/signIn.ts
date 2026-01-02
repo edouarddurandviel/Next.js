@@ -8,12 +8,12 @@ export const signIn = async (
     password: string;
   },
 ) => {
-  if (credentials === 'credentials' && email && password) {
-    if (email === 'test@test.com' && password === 'password') {
-      return 'azaz45465465464';
+  if (credentials === "credentials" && email && password) {
+    if (email === "test@test.com" && password === "password") {
+      return "azaz45465465464";
     }
   } else {
-    throw new Error('Wrong email or password');
+    throw new Error("Wrong email or password");
   }
   return signIn;
 };

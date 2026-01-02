@@ -1,4 +1,4 @@
-import type { NextConfig } from 'next';
+import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   compiler: {
@@ -8,7 +8,7 @@ const nextConfig: NextConfig = {
     preloadEntriesOnStart: true,
   },
   sassOptions: {
-    implementation: 'sass-embedded',
+    implementation: "sass-embedded",
   },
 };
 

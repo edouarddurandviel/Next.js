@@ -1,6 +1,6 @@
-import Header from 'edouard/components/Header';
-import scss from './layout.module.scss';
-import Footer from 'edouard/components/Footer';
+import Header from "@app/components/Header";
+import scss from "./layout.module.scss";
+import Footer from "@app/components/Footer";
 
 const DashbordLayout = ({
   children,

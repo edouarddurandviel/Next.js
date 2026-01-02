@@ -1,23 +1,23 @@
-import { dbQuery } from 'edouard/lib/db';
-import { UserSignin } from 'edouard/types/types';
+import { dbQuery } from "@app/lib/db";
+import { UserSignin } from "@app/types/types";
 
 export const signUp = async (data: UserSignin): Promise<UserSignin> => {
   try {
-    const response = (await dbQuery('INSERT INTO `user` (`email`, `password`) VALUES (?, ?)', [
+    const response = (await dbQuery("INSERT INTO `user` (`email`, `password`) VALUES (?, ?)", [
       data.email,
       data.password,
     ])) as UserSignin;
 
     return response;
   } catch (error: any) {
-    console.log(error)
+    console.log(error);
     return error;
   }
 };
 
 export const getUserWithEmail = async (data: UserSignin): Promise<UserSignin> => {
   try {
-    const response = (await dbQuery('SELECT * FROM user WHERE email = ?', [
+    const response = (await dbQuery("SELECT * FROM user WHERE email = ?", [
       data.email,
     ])) as UserSignin;
 
@@ -29,7 +29,7 @@ export const getUserWithEmail = async (data: UserSignin): Promise<UserSignin> =>
 
 export const createUserProfil = async (id: number) => {
   try {
-    const response = await dbQuery('SELECT id, name, email FROM users WHERE id = ?', [id]);
+    const response = await dbQuery("SELECT id, name, email FROM users WHERE id = ?", [id]);
     return response;
   } catch (error) {
     throw error;

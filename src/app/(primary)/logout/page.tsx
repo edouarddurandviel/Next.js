@@ -1,9 +1,9 @@
-'use client';
-import { useAppDispatch } from 'edouard/storeSlices/hooks';
-import { logout } from 'edouard/storeSlices/user/thunks';
-import { useEffect } from 'react';
-import { redirect } from 'next/navigation';
-import { resetAction } from 'edouard/actions';
+"use client";
+import { useAppDispatch } from "@app/storeSlices/hooks";
+import { logout } from "@app/storeSlices/user/thunks";
+import { useEffect } from "react";
+import { redirect } from "next/navigation";
+import { resetAction } from "@app/actions";
 
 const LogoutPage = () => {
   const dispatch = useAppDispatch();
@@ -11,7 +11,7 @@ const LogoutPage = () => {
   useEffect(() => {
     dispatch(resetAction());
     dispatch(logout());
-    redirect('/');
+    redirect("/");
   }, [dispatch, redirect]);
 
   return;

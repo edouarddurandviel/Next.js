@@ -1,6 +1,6 @@
-import { getAllStatistiques, getStats } from 'edouard/services/analytics/data/analytics';
-import { Metadata } from 'next';
-import Link from 'next/link';
+import { getAllStatistiques, getStats } from "@app/services/analytics/data/analytics";
+import { Metadata } from "next";
+import Link from "next/link";
 
 export async function generateMetadata(): Promise<Metadata> {
   const stats = await getStats();

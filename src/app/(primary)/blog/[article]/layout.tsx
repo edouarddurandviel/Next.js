@@ -1,4 +1,4 @@
-import scss from './blog.module.scss';
+import scss from "./blog.module.scss";
 
 const ArticleLayout = ({
   children,

@@ -1,6 +1,5 @@
-import { PoolConnection } from 'mariadb';
-import pool from './maria-db-pool';
-
+import { PoolConnection } from "mariadb";
+import pool from "./maria-db-pool";
 
 export const dbQuery = async (sql: string, params?: any[]) => {
   let conn;
@@ -9,11 +8,10 @@ export const dbQuery = async (sql: string, params?: any[]) => {
     const [result] = await conn.query(sql, params && params);
     return result;
   } catch (err) {
-    console.error('Error fetching users:', err);
+    console.error("Error fetching users:", err);
   } finally {
     if (conn) conn.release();
   }
-
 };
 
 export const transaction = async (
@@ -27,7 +25,7 @@ export const transaction = async (
     return results;
   } catch (err: any) {
     await conn.rollback();
-    console.error('dbQuery error: ', err);
+    console.error("dbQuery error: ", err);
     throw err;
   } finally {
     conn.release();

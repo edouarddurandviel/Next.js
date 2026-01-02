@@ -1,5 +1,5 @@
 .placeHolder {
- clear: both;
+  clear: both;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
@@ -18,12 +18,10 @@
 }
 
 .input {
-    &-field {
-      height: 80px !important;
-      &_error {
-        padding: 4px 0px;
-      }
+  &-field {
+    height: 80px !important;
+    &_error {
+      padding: 4px 0px;
     }
   }
-
-
+}

@@ -1,7 +1,7 @@
-'use client';
-import DashboardMenu from 'edouard/components/DashboardMenu';
-import { Placeholder } from 'edouard/styles/template';
-import { Suspense } from 'react';
+"use client";
+import DashboardMenu from "@app/components/DashboardMenu";
+import { Placeholder } from "@app/styles/template";
+import { Suspense } from "react";
 
 const DashboardLayout = ({
   children,

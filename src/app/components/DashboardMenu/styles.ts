@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const Aside = styled.aside`
   float: left;
@@ -6,7 +6,7 @@ export const Aside = styled.aside`
   padding: 0;
   width: 30%;
   background-color: white;
-  font-family: 'Courier New', monospace;
+  font-family: "Courier New", monospace;
   font-size: 12px;
   margin-top: 20px;
 `;

@@ -1,13 +1,13 @@
-'use client';
-import { usePathname } from 'next/navigation';
-import { Aside, AsideMenu } from './styles';
-import Link from 'next/link';
+"use client";
+import { usePathname } from "next/navigation";
+import { Aside, AsideMenu } from "./styles";
+import Link from "next/link";
 
 const DashboardMenu = () => {
   const pathname = usePathname();
   const routes = [
-    { label: 'Analytics', url: '/dashboard/analytics' },
-    { label: 'Settings', url: '/dashboard/settings' },
+    { label: "Analytics", url: "/dashboard/analytics" },
+    { label: "Settings", url: "/dashboard/settings" },
   ];
   return (
     <Aside>
@@ -16,7 +16,7 @@ const DashboardMenu = () => {
           <Link
             key={index}
             href={route.url}
-            className={pathname.startsWith(route.url) ? 'current' : ''}
+            className={pathname.startsWith(route.url) ? "current" : ""}
           >
             {route.label}
           </Link>

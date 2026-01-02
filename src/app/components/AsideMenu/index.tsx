@@ -1,6 +1,6 @@
-import Link from 'next/link';
-import { BlogMenu } from 'edouard/routes/routes';
-import scss from './aside.module.scss';
+import Link from "next/link";
+import { BlogMenu } from "@app/routes/routes";
+import scss from "./aside.module.scss";
 
 const AsideMenu = () => {
   return (

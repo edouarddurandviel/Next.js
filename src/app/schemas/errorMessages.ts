@@ -1,5 +1,5 @@
-import { ValidationErrorItem } from 'joi';
-import { UserErrors } from '../types/types';
+import { ValidationErrorItem } from "joi";
+import { UserErrors } from "../types/types";
 
 export const errorMessages = (details: ValidationErrorItem[]) => {
   const errors: UserErrors[] = [];

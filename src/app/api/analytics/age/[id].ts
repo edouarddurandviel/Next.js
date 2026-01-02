@@ -1,13 +1,13 @@
-import { getOneStatistic } from 'edouard/services/analytics/data/analytics';
-import { Statistiques } from 'edouard/types/types';
-import type { NextApiRequest, NextApiResponse } from 'next';
+import { getOneStatistic } from "@app/services/analytics/data/analytics";
+import { Statistiques } from "@app/types/types";
+import type { NextApiRequest, NextApiResponse } from "next";
 
 export default async function userHandler(req: NextApiRequest, res: NextApiResponse<Statistiques>) {
   const { method } = req;
-  const data = { id: '1' };
+  const data = { id: "1" };
 
   switch (method) {
-    case 'GET':
+    case "GET":
       {
         try {
           const result = await getOneStatistic(data);
@@ -19,7 +19,7 @@ export default async function userHandler(req: NextApiRequest, res: NextApiRespo
       break;
 
     default:
-      res.setHeader('Allow', ['GET']);
+      res.setHeader("Allow", ["GET"]);
       res.status(405).end(`Method ${method} Not Allowed`);
   }
 }

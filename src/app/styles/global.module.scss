@@ -1,5 +1,5 @@
-@use 'base';
-@use 'sass:math';
+@use "base";
+@use "sass:math";
 
 :root {
   --primary: #000000;
@@ -68,7 +68,7 @@ html {
   }
 
   .login-container::before {
-    content: '';
+    content: "";
     position: absolute;
     top: 6px;
     left: 6px;
@@ -113,6 +113,25 @@ html {
     box-shadow: 4px 4px 0px var(--primary);
   }
 
+  .triggrerBtn{
+    width: 200px;
+    padding: 12px;
+    background-color: var(--secondary);
+    color: var(--primary);
+    border: 2px solid var(--primary);
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: all 0.3s;
+  }
+
+  .triggrerBtn:hover {
+    box-shadow: 4px 4px 0px var(--primary);
+    transform: translate(-2px, -2px);
+  }
+
+
   button {
     width: 100%;
     padding: 12px;
@@ -141,7 +160,7 @@ html {
 
   .divider::before,
   .divider::after {
-    content: '';
+    content: "";
     flex: 1;
     border-bottom: 2px solid var(--primary);
     margin: 0 10px;
