@@ -1,7 +1,7 @@
 import { fetchErrors } from "@app/lib/fetchErrors";
 import { Analitics, UserSignin } from "@app/types/types";
 
-export async function signIn({ user }: { user: UserSignin },): Promise<UserSignin[] | string> {
+export async function signIn({ user }: { user: UserSignin }): Promise<UserSignin[] | string> {
   try {
     const result = await fetch("api/user", {
       method: "POST",

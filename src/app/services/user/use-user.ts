@@ -4,10 +4,7 @@ import { UserSignin } from "@app/types/types";
 import { signIn, fetchUserWithEmail, createUserProfil } from "@app/services/user/api-user";
 
 export function useSignUpHook(user: UserSignin) {
-  const { trigger, data, error, isMutating } = useSWRMutation(
-    "api/user", 
-    () => signIn({user})
-  );
+  const { trigger, data, error, isMutating } = useSWRMutation("api/user", () => signIn({ user }));
 
   return {
     trigger,
