@@ -9,4 +9,9 @@ export const FooterContainer = styled.footer`
     align-content: center;
     justify-content: center;
     align-items: center;
+
+    code, strong {
+    margin: 0 10px;
+    color: #ff5e5b;
+    }
 `

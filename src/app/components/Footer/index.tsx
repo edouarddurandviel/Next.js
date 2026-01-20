@@ -3,7 +3,7 @@ import {FooterContainer} from "./styles";
 const Footer = () => {
   return (
     <FooterContainer>
-      Next.js - using: App Router, SWR, redux-toolkit, React-Hook-Form, joi, argon2... 
+      <strong>Next.js</strong> - using: <code> App Router, SWR, redux-toolkit, React-Hook-Form, React-forms, joi, argon2 </code> etc... 
     </FooterContainer>
   );
 };
