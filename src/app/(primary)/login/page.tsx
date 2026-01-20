@@ -50,13 +50,13 @@ const LoginPage = () => {
           <h1>Signin</h1>
 
           <Input
-            control={control as any}
+            control={control as unknown}
             placeholder="Email"
             name="email"
             rules={{ required: true }}
           />
           <Input
-            control={control as any}
+            control={control as unknown}
             placeholder="Password"
             name="password"
             rules={{ required: true }}
