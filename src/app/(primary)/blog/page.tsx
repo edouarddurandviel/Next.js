@@ -1,7 +1,6 @@
 import { getAllArticleSorts, getStats } from "@app/services/blog/data/articles";
 import { Metadata } from "next";
-import Link from "next/link";
-import { ListArticle, ListArticleH1, ListArticleMain, ListArticleP } from "./styles";
+import { ListArticle, ListArticleH1, ListArticleMain, ListArticleP, ListArticleLink } from "./styles";
 
 export async function generateMetadata(): Promise<Metadata> {
   // SEO purpose
@@ -23,7 +22,7 @@ const Blog = async () => {
           <ListArticle key={short.id}>
             <ListArticleH1>{short.title}</ListArticleH1>
             <ListArticleP>{short.short}</ListArticleP>
-            <Link href={`/blog/${short.slug}`}>View</Link>
+            <ListArticleLink href={`/blog/${short.slug}`}>View page</ListArticleLink>
           </ListArticle>
         ))}
     </ListArticleMain>

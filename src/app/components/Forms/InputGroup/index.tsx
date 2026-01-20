@@ -4,11 +4,13 @@ import FormError from "../Errors/formErrors";
 import { UserErrors } from "@app/types/types";
 
 const Index = ({
+  label,
   type,
   name,
   value,
   state,
 }: {
+  label: string
   type: string;
   name: string;
   value: string;
@@ -24,7 +26,7 @@ const Index = ({
 
   return (
     <InputGroup>
-      <Label htmlFor={name}>{name}</Label>
+      <Label htmlFor={name}>{label}</Label>
       <Input type={type} value={values || ""} name={name} onChange={(e) => handleChange(e)} />
       {show && <FormError state={state && state} name={name} />}
     </InputGroup>

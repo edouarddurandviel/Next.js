@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import { useSelector } from "react-redux";
 import HeaderMenu from "./HeaderMenu";
 import { HeaderInfo } from "./styles";

@@ -11,24 +11,25 @@ export const Aside = styled.aside`
 
 export const AsideMenu = styled.nav`
   display: flex;
+  width: 100%;
+  background-color: #ff5e5b;
+  margin: 10px 0;
   flex-direction: column;
-  align-items: stretch;
-  list-style-type: none;
 
   & a {
-    font-size: 15px;
-    color: red;
+    width: 100%;
+    padding: 10px 5px;
+    color: white;
     text-decoration: none;
-    padding: 10px;
-    line-height: 15px;
+    border-bottom: 1px solid white;
 
     &:hover {
-      background-color: red;
+      background-color: #690909;
       color: white;
     }
   }
 
   & a.current {
-    background-color: red;
+    background-color: #690909;
   }
 `;

@@ -1,3 +1,4 @@
+import Link from "next/link";
 import styled from "styled-components";
 
 export const ListArticleMain = styled.main`
@@ -10,12 +11,20 @@ export const ListArticle = styled.div`
   width: 100%;
   margin: 10px 0 0 0;
   box-sizing: border-box;
-  border: 1px solid #ff5e5b;
+  border: 2px solid #ff5e5b;
   background-color: white;
   color: #200202;
   flex-direction: column;
   align-content: flex-start;
   align-items: flex-start;
+`;
+
+export const ListArticleLink = styled(Link)`
+  font-size: 16px;
+  color: black;
+  text-align: right;
+  &:hover{
+  text-decoration: none;
 `;
 
 export const ListArticleH1 = styled.h1`

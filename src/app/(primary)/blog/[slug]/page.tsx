@@ -1,8 +1,7 @@
 import { Metadata } from "next";
-import Link from "next/link";
 import { ListArticleH1 } from "../styles";
 import { getArticleContent } from "@app/services/blog/data/articles";
-import { ArticleBody } from "./styles";
+import { ArticleBody, LinkBack, ArticleMain} from "./styles";
 
 export async function generateMetadata(): Promise<Metadata> {
   const article = await { title: "article 1", content: "content" };
@@ -17,10 +16,10 @@ const Article = async ({ params }: { params: Promise<{ slug: string }> }) => {
   const article = await getArticleContent({ slug });
 
   return (
-    <main>
-      <Link key={1} href="/blog">
+    <ArticleMain>
+      <LinkBack key={1} href="/blog">
         back
-      </Link>
+      </LinkBack>
       {article && (
         <ArticleBody>
           <ListArticleH1>{article.title}</ListArticleH1>
@@ -28,7 +27,7 @@ const Article = async ({ params }: { params: Promise<{ slug: string }> }) => {
           <p>{article.content}</p>
         </ArticleBody>
       )}
-    </main>
+    </ArticleMain>
   );
 };
 
