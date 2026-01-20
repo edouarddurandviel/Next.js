@@ -1,0 +1,30 @@
+$font: "Courier New", monospace;
+$primary: #ff5e5b;
+$secondary: #690909;
+$fontColor: #200202;
+$tertiary: #200202;
+$theme: DarkGray;
+
+@mixin theme($theme: $theme) {
+  background: $theme;
+  box-shadow: 0 0 1px rgba($theme, 0.25);
+  color: $primary;
+}
+
+@mixin screenLarge() {
+  @media screen and (min-width: 1024px) {
+    @content;
+  }
+}
+
+@mixin screenMedium() {
+  @media screen and (min-width: 600px) and (max-width: 1024px) {
+    @content;
+  }
+}
+
+@mixin screenSmall() {
+  @media screen and (max-width: 600px) {
+    @content;
+  }
+}
