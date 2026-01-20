@@ -1,8 +1,10 @@
+import {FooterContainer} from "./styles";
+
 const Footer = () => {
   return (
-    <footer>
-      <p>the footer</p>
-    </footer>
+    <FooterContainer>
+      Next.js - using: App Router, SWR, redux-toolkit, React-Hook-Form, joi, argon2... 
+    </FooterContainer>
   );
 };
 

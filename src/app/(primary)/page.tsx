@@ -8,8 +8,8 @@ export const metadata: Metadata = {
 const Home = () => {
   return (
     <main>
-      <h1>Companies dashboard</h1>
-      <p>introduction</p>
+      <h1>HOMPAGE</h1>
+      <p>Welcome to Next.js application</p>
     </main>
   );
 };

@@ -39,7 +39,7 @@ const LoginPage = () => {
 
   useEffect(() => {
     if (userLogin && !userLogin.error) {
-      redirect("/");
+      redirect("/dashboard");
     }
   }, [userLogin]);
 
@@ -48,6 +48,7 @@ const LoginPage = () => {
       <Centered>
         <Form onSubmit={handleSubmit(submitForm)}>
           <h1>Signin</h1>
+          <p>react-hook-form, with redux-toolkit and server side query and validation</p>
 
           <Input
             control={control as unknown}
