@@ -1,7 +1,6 @@
-"use client";
 import DashboardMenu from "@app/components/DashboardMenu";
-import { Placeholder } from "@app/styles/template";
 import { Suspense } from "react";
+import { Col, Row } from "react-bootstrap";
 
 const DashboardLayout = ({
   children,
@@ -9,12 +8,14 @@ const DashboardLayout = ({
   children: React.ReactNode;
 }>) => {
   return (
-    <>
-      <DashboardMenu />
-      <Placeholder>
+    <Row>
+      <Col md={3}>
+        <DashboardMenu />
+      </Col>
+      <Col md={9}>
         <Suspense>{children}</Suspense>
-      </Placeholder>
-    </>
+      </Col>
+    </Row>
   );
 };
 

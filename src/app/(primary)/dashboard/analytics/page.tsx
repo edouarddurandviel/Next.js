@@ -1,8 +1,9 @@
-import { getAllStatistiques, getStats } from "@app/services/analytics/data/analytics";
+import { getAllAnalytics, getStats } from "@app/services/analytics/data/analytics";
 import { Metadata } from "next";
-import Link from "next/link";
+import { ItemLink, ItemList, ItemListDescription, ItemListTitle, Notes } from "./styles";
 
 export async function generateMetadata(): Promise<Metadata> {
+  // SEO purpose
   const stats = await getStats();
   return {
     title: stats[0].name,
@@ -11,33 +12,28 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 const AnalyticsPage = async () => {
-  const stats = await getStats();
-  const statsApiGET = await getAllStatistiques();
+  // Server query
+  const statsApiGET = await getAllAnalytics();
 
   return (
     <>
-      <div>My personal list</div>
-      <div>Page buy default first rendering on the server side.</div>
-      <div>Use of fetch with cache: no-store argument.</div>
-
+      <Notes>
+        <div>My personal list</div>
+        <div>Page buy default first rendering on the server side.</div>
+        <div>View detail is fetched through restAPI</div>
+      </Notes>
       <nav>
-        {stats.map((company) => (
-          <div key={company.id}>
-            <Link href={`/dashboard/analytics/${company.id}`}>
-              {company.name} - from {company.country}
-            </Link>
-          </div>
-        ))}
-      </nav>
-
-      <nav>
-        {statsApiGET.map((stat) => (
-          <div key={stat.id}>
-            <Link href={`/dashboard/analytics/${stat.id}`}>
-              {stat.age} - from {stat.country} - gender: {stat.gender}
-            </Link>
-          </div>
-        ))}
+        {statsApiGET &&
+          statsApiGET.length &&
+          statsApiGET.map((stat) => (
+            <div key={stat.id}>
+              <ItemList>
+                <ItemListTitle>{stat.task}</ItemListTitle>
+                <ItemListDescription>{stat.description}</ItemListDescription>
+                <ItemLink href={`/dashboard/analytics/${stat.id}`}>View</ItemLink>
+              </ItemList>
+            </div>
+          ))}
       </nav>
     </>
   );

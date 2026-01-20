@@ -1,20 +1,17 @@
-import Link from "next/link";
 import { BlogMenu } from "@app/routes/routes";
-import scss from "./aside.module.scss";
+import { AsideLink, AsideNav, AsidePlaceholder } from "./styles";
 
 const AsideMenu = () => {
   return (
-    <aside className={scss.aside}>
-      <div className={scss.menu}>
-        <nav className={scss.nav}>
-          {BlogMenu.map((route, index) => (
-            <Link key={index} href={route.url}>
-              {route.label}
-            </Link>
-          ))}
-        </nav>
-      </div>
-    </aside>
+    <AsidePlaceholder>
+      <AsideNav>
+        {BlogMenu.map((route, index) => (
+          <AsideLink key={index} href={route.url}>
+            {route.label}
+          </AsideLink>
+        ))}
+      </AsideNav>
+    </AsidePlaceholder>
   );
 };
 

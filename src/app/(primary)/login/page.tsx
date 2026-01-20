@@ -1,12 +1,13 @@
 "use client";
 import { Fragment, useCallback, useEffect } from "react";
 import { useForm } from "react-hook-form";
+import { useSelector } from "react-redux";
+import { redirect } from "next/navigation";
+import { Input } from "@app/components/Forms";
+import { RootState } from "@app/storeSlices";
 import { useAppDispatch } from "@app/storeSlices/hooks";
 import { signIn } from "@app/storeSlices/user/thunks";
-import { useSelector } from "react-redux";
-import { RootState } from "@app/storeSlices";
-import { redirect } from "next/navigation";
-import Input from "@app/components/Forms/Input";
+import { Button } from "@app/styles/template";
 
 const LoginPage = () => {
   const dispatch = useAppDispatch();
@@ -17,7 +18,7 @@ const LoginPage = () => {
     password: string;
   };
 
-  const { handleSubmit, control, reset, register } = useForm({
+  const { handleSubmit, control } = useForm({
     defaultValues: {
       email: "",
       password: "",
@@ -60,7 +61,7 @@ const LoginPage = () => {
             name="password"
             rules={{ required: true }}
           />
-          <button>Submit</button>
+          <Button>Submit</Button>
           {loading && <div>Submitting...</div>}
         </form>
       </div>

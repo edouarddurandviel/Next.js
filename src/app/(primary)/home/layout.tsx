@@ -1,4 +1,4 @@
-import scss from "../layout.module.scss";
+import scss from "@app/styles/layout.module.scss";
 
 const HomeLayout = ({
   children,

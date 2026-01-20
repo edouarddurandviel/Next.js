@@ -54,11 +54,25 @@ export type UserProfile = {
   email: string;
 };
 
-export type Statistiques = {
+export type Analitics = {
   id: number;
-  age: number;
-  gender: string;
-  country: string;
+  task: number;
+  description: string;
+};
+
+export type ArticleShort = {
+  id: number;
+  title: string;
+  slug: string;
+  short: string;
+};
+
+export type Article = {
+  id: number;
+  title: string;
+  slug: string;
+  short: string;
+  content: string;
 };
 
 export type QueryErrors = {

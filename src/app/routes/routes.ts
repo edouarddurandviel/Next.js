@@ -10,5 +10,5 @@ export const HearMenu = [
 
 export const BlogMenu = [
   { label: "Blog", url: "/blog" },
-  { label: "Article", url: "/blog/:article" },
+  { label: "Article", url: "/blog/:slug" },
 ];

@@ -1,4 +1,5 @@
 import { ChangeEvent, useState } from "react";
+import { InputGroup, Input, Label } from "@app/styles/template";
 import FormError from "../Errors/formErrors";
 import { UserErrors } from "@app/types/types";
 
@@ -22,11 +23,11 @@ const Index = ({
   };
 
   return (
-    <div className="InputGroup">
-      <label htmlFor={name}>{name}</label>
-      <input type={type} value={values || ""} name={name} onChange={(e) => handleChange(e)} />
+    <InputGroup>
+      <Label htmlFor={name}>{name}</Label>
+      <Input type={type} value={values || ""} name={name} onChange={(e) => handleChange(e)} />
       {show && <FormError state={state && state} name={name} />}
-    </div>
+    </InputGroup>
   );
 };
 

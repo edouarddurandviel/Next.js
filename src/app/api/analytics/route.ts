@@ -1,10 +1,10 @@
 // hide API keys, interact with a DB, or process sensitive logic.
 // without params
-import { getAllStatistiques } from "@app/services/analytics/data/analytics";
+import { getAllAnalytics } from "@app/services/analytics/data/analytics";
 import { NextRequest } from "next/server";
 
 export async function GET(_: NextRequest, ctx: RouteContext<"/api/analytics">) {
-  const result = await getAllStatistiques();
+  const result = await getAllAnalytics();
 
   if (result.length === 0)
     return Response.json({ error: "Statistiques not found" }, { status: 404 });

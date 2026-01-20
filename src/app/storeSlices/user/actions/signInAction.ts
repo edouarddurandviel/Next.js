@@ -1,10 +1,10 @@
 "use server";
 import { errorMessages } from "@app/schemas/errorMessages";
 import { userSchemas } from "@app/schemas/user";
-import { getUserWithEmail } from "@app/services/user";
+import { getUserWithEmail } from "@app/services/user/data/user";
 import { UserSignin } from "@app/types/types";
 import * as argon2 from "argon2";
-import * as jwt from "jsonwebtoken";
+import * as jsonwebtoken from "jsonwebtoken";
 import { cookies } from "next/headers";
 
 export default async function signInAction(formData: FormData) {
@@ -31,9 +31,6 @@ export default async function signInAction(formData: FormData) {
   } else {
     const fetchedUser = await getUserWithEmail(data);
 
-    console.log(fetchedUser);
-    console.log("user" + user);
-
     if (fetchedUser) {
       if (await argon2.verify(fetchedUser.password, user.value.password)) {
         const payload = {
@@ -41,7 +38,7 @@ export default async function signInAction(formData: FormData) {
         };
 
         const secret = user.value.password;
-        const token = jwt.sign(payload, secret, { expiresIn: "1h" });
+        const token = jsonwebtoken.sign(payload, secret, { expiresIn: "1h" });
 
         const cookieStore = await cookies();
         cookieStore.set("jwt", token, {

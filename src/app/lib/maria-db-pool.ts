@@ -1,5 +1,9 @@
 import mariadb, { PoolConfig } from "mariadb";
 
+declare global {
+  var mariadbPool: mariadb.Pool | undefined;
+}
+
 const access: PoolConfig = {
   host: "localhost",
   database: "mydb",
@@ -10,6 +14,10 @@ const access: PoolConfig = {
   connectTimeout: 10000,
 };
 
-const pool = mariadb.createPool(access);
+const pool = global.mariadbPool ?? mariadb.createPool(access);
+
+if (process.env.NODE_ENV !== "production") {
+  global.mariadbPool = pool;
+}
 
 export default pool;

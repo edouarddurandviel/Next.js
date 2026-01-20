@@ -3,29 +3,29 @@ import styled from "styled-components";
 export const MainMenu = styled.div`
   margin: 0;
   padding: 0;
-  width: auto;
-  height: 50px;
+  width: 100%;
+  height: 40px;
   list-style-type: none;
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
+  background-color: #ff5e5b;
 `;
 
-export const HeaderMenu = styled.nav`
+export const MenuHeader = styled.nav`
   margin: 0;
   padding: 0;
   height: 40px;
   display: flex;
-  width: 1000px;
+  width: 100%;
   list-style-type: none;
-  border: 1px solid #d4d4d4ff;
   overflow: hidden;
 
   & a {
     display: flex;
     font-family: system-ui;
-    color: #2f2a49ff;
+    color: #ffffff;
     font-weight: bold;
     text-decoration: none;
     border-left: 1px solid #d4d4d4ff;
@@ -42,11 +42,13 @@ export const HeaderMenu = styled.nav`
     }
 
     &:hover {
-      color: #6a55c7ff;
+      background-color: #690909;
+      color: white;
     }
   }
 
   & .current {
-    color: #6a55c7ff;
+    background-color: #690909;
+    color: white;
   }
 `;

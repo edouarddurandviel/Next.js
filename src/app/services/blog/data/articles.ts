@@ -1,33 +1,39 @@
 import { dbQuery, transaction } from "@app/lib/db";
 import pool from "@app/lib/maria-db-pool";
-import { Analitics } from "@app/types/types";
+import { Analitics, Article, ArticleShort } from "@app/types/types";
 
-type Stat = {
-  id: number;
-  name: string;
-  country: string;
-  description: string;
-  title: string;
+export const getStats = () => {
+  return {
+    title: "Blog list articles",
+    description: "List of articles on Lorem ipsum",
+  };
 };
 
-export const getStats = async (): Promise<Stat[]> => {
-  return [
-    { id: 1, title: "title", description: "description", name: "Edouard", country: "fr" },
-  ] as Stat[];
-};
-
-export const getAllAnalytics = async (): Promise<Analitics[]> => {
+export const getAllArticleSorts = async (): Promise<ArticleShort[]> => {
   try {
-    const resp = (await dbQuery("SELECT * FROM analytics")) as Analitics[];
-    return resp;
+    const response = (await dbQuery(
+      "SELECT a.id, a.title, a.slug, a.short FROM articles a",
+    )) as ArticleShort[];
+    return response;
+  } catch (error) {
+    throw error;
+  }
+};
+
+export const getArticleContent = async (data: { slug: string }): Promise<Article> => {
+  try {
+    const resp = (await dbQuery("SELECT * FROM articles WHERE slug = ?", [data.slug])) as Article[];
+    return resp[0] as Article;
   } catch (error) {
     throw error;
   }
 };
 
 export const getOneAnalytic = async (data: { id: string }): Promise<Analitics> => {
-  const resp = (await dbQuery("SELECT * FROM analytics WHERE id = ?", [data.id])) as Analitics[];
-  return resp[0] as Analitics;
+  const response = (await dbQuery("SELECT * FROM analytics WHERE id = ?", [
+    data.id,
+  ])) as Analitics[];
+  return response[0] as Analitics;
 };
 
 export const updateStatsFiltered = async (data: {

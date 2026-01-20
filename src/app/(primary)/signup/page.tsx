@@ -1,12 +1,13 @@
 "use client";
-import { Fragment, useActionState, useEffect } from "react";
+import { Fragment, useActionState } from "react";
 import Errors from "@app/components/Forms/Errors/errors";
 import InputGroup from "@app/components/Forms/InputGroup";
-import { useSelector } from "react-redux";
-import { redirect } from "next/navigation";
-import { RootState } from "@app/storeSlices";
 import signUpAction from "@app/actions/signUpAction";
 import { UserAccount } from "@app/types/types";
+
+// React Use action
+// backend and fronend validation
+// backend redirect
 
 const SignUpPage = () => {
   const initialState = {
@@ -19,19 +20,15 @@ const SignUpPage = () => {
 
   const [state, formAction, pending] = useActionState(signUpAction, initialState);
 
-  useEffect(() => {
-    if (state && !state.error) {
-      redirect("/");
-    }
-  }, [state]);
-
   return (
     <Fragment>
-      {state && state.error && <Errors errors={state.error} />}
-
       <div className="centered">
         <form action={formAction}>
           <h1>SignUn - create an account</h1>
+          <p>React: useActionState backend validation</p>
+
+          {state && state.error && <Errors errors={state.error} />}
+
           <InputGroup
             type="text"
             value={(state && state.data.email) || ""}

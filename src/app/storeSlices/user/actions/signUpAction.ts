@@ -2,7 +2,7 @@
 import { errorMessages } from "@app/schemas/errorMessages";
 import { schema } from "@app/schemas/account";
 import type { UserAccount } from "@app/types/types";
-import { signUp } from "@app/services/user";
+import { signUp } from "@app/services/user/data/user";
 import * as argon2 from "argon2";
 
 export default async function signUpAction(

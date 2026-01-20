@@ -1,5 +1,6 @@
 import AsideMenu from "@app/components/AsideMenu";
-import scss from "./[article]/blog.module.scss";
+import { Col, Row } from "react-bootstrap";
+import { Suspense } from "react";
 
 const BlogLayout = ({
   children,
@@ -7,10 +8,14 @@ const BlogLayout = ({
   children: React.ReactNode;
 }>) => {
   return (
-    <>
-      <AsideMenu />
-      <div className={scss.BlogContainer}>{children}</div>
-    </>
+    <Row>
+      <Col md={3}>
+        <AsideMenu />
+      </Col>
+      <Col md={9}>
+        <Suspense>{children}</Suspense>
+      </Col>
+    </Row>
   );
 };
 

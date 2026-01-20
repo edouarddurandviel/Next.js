@@ -1,6 +1,7 @@
+import { Container } from "react-bootstrap";
 import Header from "@app/components/Header";
-import scss from "./layout.module.scss";
 import Footer from "@app/components/Footer";
+import { PlaceHolder } from "@app/styles/template";
 
 const DashbordLayout = ({
   children,
@@ -8,11 +9,11 @@ const DashbordLayout = ({
   children: React.ReactNode;
 }>) => {
   return (
-    <>
+    <Container>
       <Header />
-      <div className={scss.placeHolder}>{children}</div>
+      <PlaceHolder>{children}</PlaceHolder>
       <Footer />
-    </>
+    </Container>
   );
 };
 

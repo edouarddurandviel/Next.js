@@ -1,45 +1,38 @@
 "use server";
+import * as argon2 from "argon2";
 import { errorMessages } from "@app/schemas/errorMessages";
 import type { UserAccount } from "@app/types/types";
-import { signUp } from "@app/services/user";
-import * as argon2 from "argon2";
+import { signUp } from "@app/services/user/data/user";
 import { userSchemas } from "@app/schemas/user";
+import { redirect } from "next/navigation";
 
 export default async function signUpAction(
   previousState: UserAccount | undefined,
   formData: FormData,
 ): Promise<UserAccount | undefined> {
-  try {
-    const user = await userSchemas.validateAsync(
-      {
-        email: formData.get("email"),
-        password: formData.get("password"),
-      },
-      { abortEarly: false },
-    );
+  const user = await userSchemas.validate(
+    {
+      email: formData.get("email"),
+      password: formData.get("password"),
+    },
+    { abortEarly: false },
+  );
 
-    if (user && user.error) {
-      const error = await errorMessages(user.error.details);
+  if (user && user.error) {
+    const errors = await errorMessages(user.error.details);
+    const nextState = { error: errors, data: previousState!.data };
 
-      const nextState = { error: error, data: previousState!.data };
-      return nextState;
-    }
+    return nextState;
+  }
 
-    let register;
-    if (user && !user.error) {
-      const passwordHash = await argon2.hash(user.password);
-      const dataHash = {
-        email: user.email,
-        password: passwordHash,
-      };
-      register = (await signUp(dataHash)) as unknown as UserAccount;
-    }
+  if (user && !user.error) {
+    const passwordHash = await argon2.hash(user.value.password);
+    const dataHash = {
+      email: user.value.email,
+      password: passwordHash,
+    };
+    (await signUp(dataHash)) as unknown as UserAccount;
 
-    // mutation
-    if (register) {
-      return (previousState = register);
-    }
-  } catch (e) {
-    console.log(e);
+    redirect("/blog");
   }
 }

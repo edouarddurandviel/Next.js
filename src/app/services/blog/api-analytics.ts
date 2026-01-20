@@ -1,10 +1,6 @@
 import { Analitics } from "@app/types/types";
 
-export async function fetchAllAnalytics({
-  token,
-}: {
-  token: string;
-}): Promise<Analitics[] | unknown> {
+export async function fetchAllAnalytics({ token }: { token: string }): Promise<Analitics[]> {
   try {
     const result = await fetch(`/api/analytics`, {
       method: "GET",

@@ -4,11 +4,9 @@ export const Aside = styled.aside`
   float: left;
   margin: 0;
   padding: 0;
-  width: 30%;
+  width: 100%;
+  height: 100%;
   background-color: white;
-  font-family: "Courier New", monospace;
-  font-size: 12px;
-  margin-top: 20px;
 `;
 
 export const AsideMenu = styled.nav`
@@ -19,7 +17,7 @@ export const AsideMenu = styled.nav`
 
   & a {
     font-size: 15px;
-    color: white;
+    color: red;
     text-decoration: none;
     padding: 10px;
     line-height: 15px;
