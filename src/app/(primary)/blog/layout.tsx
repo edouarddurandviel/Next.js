@@ -13,7 +13,7 @@ const BlogLayout = ({
         <AsideMenu />
       </Col>
       <Col md={9}>
-        <Suspense fallback={<h1>Loading Blog post...</h1>}>{children}</Suspense>
+        <Suspense>{children}</Suspense>
       </Col>
     </Row>
   );
