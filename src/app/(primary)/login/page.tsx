@@ -51,13 +51,13 @@ const LoginPage = () => {
           <p>react-hook-form, with redux-toolkit and server side query and validation</p>
 
           <Input
-            control={control as unknown}
+            control={control as any}
             placeholder="Email"
             name="email"
             rules={{ required: true }}
           />
           <Input
-            control={control as unknown}
+            control={control as any}
             placeholder="Password"
             name="password"
             rules={{ required: true }}
