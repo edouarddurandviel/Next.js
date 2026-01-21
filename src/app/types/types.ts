@@ -55,9 +55,9 @@ export type UserProfile = {
 };
 
 export type Analitics = {
-  id: number;
-  task: number;
+  task: string;
   description: string;
+  id: number;
 };
 
 export type ArticleShort = {

@@ -1,10 +1,12 @@
 import userReducers from "./user/slices";
+import uiEventsReducers from "./uiEvents/slices";
 import { configureStore } from "@reduxjs/toolkit";
 
 export const makeStore = () => {
   return configureStore({
     reducer: {
       user: userReducers,
+      events: uiEventsReducers,
     },
   });
 };

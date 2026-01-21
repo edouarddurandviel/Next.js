@@ -10,7 +10,7 @@ const Index = ({
   value,
   state,
 }: {
-  label: string
+  label: string;
   type: string;
   name: string;
   value: string;

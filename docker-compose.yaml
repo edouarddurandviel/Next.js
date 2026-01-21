@@ -1,0 +1,38 @@
+services:
+  next:
+    image: node:22.22.0
+    container_name: next-application
+    build:
+      context: ./
+    ports:
+      - "3000:3000"
+    volumes:
+      - /usr/src/app
+      - /usr/src/app/node_modules
+    restart: always
+    depends_on:
+      - mariadb
+
+  mariadb:
+    image: mariadb:11.3
+    container_name: mariadb-database
+    restart: always
+    command: --default-authentication-plugin=mysql_native_password
+    environment:
+      MARIADB_ROOT_PASSWORD: edouard
+      MARIADB_DATABASE: mydb
+      MARIADB_USER: myuser
+      MARIADB_PASSWORD: mypassword
+    expose:
+      - 3307 # access via localhost:3307
+    volumes:
+      - mariadb_data:/var/lib/mysql
+    networks:
+      - mariadb_net
+
+networks:
+  mariadb_net:
+    driver: bridge
+
+volumes:
+  mariadb_data:

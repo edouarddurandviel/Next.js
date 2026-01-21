@@ -29,3 +29,28 @@ export async function fetchOneAnalytic(id: string): Promise<Analitics> {
     throw new Error(e.message);
   }
 }
+
+export async function fetchUpdateOneAnalytic(data: Analitics): Promise<Analitics> {
+  try {
+    const result = await fetch(`/api/analytics/${data.id}`, {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data),
+    }).then((res) => res.json());
+    return result;
+  } catch (e: any) {
+    throw new Error(e.message);
+  }
+}
+
+export async function fetchDeleteOneAnalytic(id: number): Promise<Analitics> {
+  try {
+    const result = await fetch(`/api/analytics/${id}`, {
+      method: "DELETE",
+      headers: { "Content-Type": "application/json" },
+    }).then((res) => res.json());
+    return result;
+  } catch (e: any) {
+    throw new Error(e.message);
+  }
+}

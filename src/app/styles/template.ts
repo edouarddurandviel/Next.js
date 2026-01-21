@@ -75,9 +75,9 @@ export const Form = styled.form`
   align-items: stretch;
 `;
 
-export const ErrorContainer= styled.div`
+export const ErrorContainer = styled.div`
   height: 50px;
-`
+`;
 
 export const InputGroup = styled.div`
   margin-bottom: 20px;
@@ -101,7 +101,7 @@ export const Input = styled.input`
 
 export const Label = styled.label`
   padding: 4px 0px;
-    font-size: 16px;
+  font-size: 16px;
 `;
 
 // export const InputGroup = styled.label`

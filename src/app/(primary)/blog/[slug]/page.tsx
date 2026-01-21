@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 import { ListArticleH1 } from "../styles";
 import { getArticleContent } from "@app/services/blog/data/articles";
-import { ArticleBody, LinkBack, ArticleMain} from "./styles";
+import { ArticleBody, LinkBack, ArticleMain } from "./styles";
 
 export async function generateMetadata(): Promise<Metadata> {
   const article = await { title: "article 1", content: "content" };

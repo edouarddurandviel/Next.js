@@ -19,7 +19,7 @@ export const LinkBack = styled(Link)`
   line-height: 16px;
   margin: 10px 0 30px 0;
   color: black;
-  &:hover{
-  text-decoration: none;
+  &:hover {
+    text-decoration: none;
   }
-`
+`;

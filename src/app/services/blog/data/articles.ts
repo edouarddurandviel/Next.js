@@ -1,6 +1,6 @@
 import { dbQuery, transaction } from "@app/lib/db";
 import pool from "@app/lib/maria-db-pool";
-import { Analitics, Article, ArticleShort } from "@app/types/types";
+import { Article, ArticleShort } from "@app/types/types";
 
 export const getStats = () => {
   return {
@@ -9,7 +9,7 @@ export const getStats = () => {
   };
 };
 
-export const getAllArticleSorts = async (): Promise<ArticleShort[]> => {
+export const getAllArticlesSorts = async (): Promise<ArticleShort[]> => {
   try {
     const response = (await dbQuery(
       "SELECT a.id, a.title, a.slug, a.short FROM articles a",
@@ -29,29 +29,26 @@ export const getArticleContent = async (data: { slug: string }): Promise<Article
   }
 };
 
-export const getOneAnalytic = async (data: { id: string }): Promise<Analitics> => {
-  const response = (await dbQuery("SELECT * FROM analytics WHERE id = ?", [
-    data.id,
-  ])) as Analitics[];
-  return response[0] as Analitics;
+export const getOneArticle = async (data: { id: string }): Promise<Article> => {
+  const response = (await dbQuery("SELECT * FROM articles WHERE id = ?", [data.id])) as Article[];
+  return response[0] as Article;
 };
 
-export const updateStatsFiltered = async (data: {
+export const updateArticleFiltered = async (data: {
   id: number;
   task: string;
-}): Promise<Analitics[] | undefined | unknown> => {
+}): Promise<Article[] | undefined | unknown> => {
   const { id, task } = data;
 
   // Full transaction
   ///////////////////
   const conn = await pool.getConnection();
-
   try {
     const res = await transaction(async () => {
-      await conn.query("UPDATE analytics SET task = ?", [task]);
-      const result = (await conn.query("SELECT * FROM analytics WHERE id = ?", [
+      await conn.query("UPDATE articles SET task = ?", [task]);
+      const result = (await conn.query("SELECT * FROM articles WHERE id = ?", [
         id,
-      ])) as unknown as Analitics[];
+      ])) as unknown as Article[];
       return result;
     });
     return res;

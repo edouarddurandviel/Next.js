@@ -1,6 +1,7 @@
 import { getAllAnalytics, getStats } from "@app/services/analytics/data/analytics";
 import { Metadata } from "next";
-import { ItemLink, ItemList, ItemListDescription, ItemListTitle, Notes } from "./styles";
+import { Notes } from "./styles";
+import ItemList from "@app/components/ItemList";
 
 export async function generateMetadata(): Promise<Metadata> {
   // SEO purpose
@@ -25,15 +26,7 @@ const AnalyticsPage = async () => {
       <nav>
         {statsApiGET &&
           statsApiGET.length &&
-          statsApiGET.map((stat) => (
-            <div key={stat.id}>
-              <ItemList>
-                <ItemListTitle>{stat.task}</ItemListTitle>
-                <ItemListDescription>{stat.description}</ItemListDescription>
-                <ItemLink href={`/dashboard/analytics/${stat.id}`}>View</ItemLink>
-              </ItemList>
-            </div>
-          ))}
+          statsApiGET.map((stat) => <ItemList key={stat.id} stat={stat} />)}
       </nav>
     </>
   );

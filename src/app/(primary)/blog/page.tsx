@@ -1,6 +1,12 @@
-import { getAllArticleSorts, getStats } from "@app/services/blog/data/articles";
+import { getAllArticlesSorts, getStats } from "@app/services/blog/data/articles";
 import { Metadata } from "next";
-import { ListArticle, ListArticleH1, ListArticleMain, ListArticleP, ListArticleLink } from "./styles";
+import {
+  ListArticle,
+  ListArticleH1,
+  ListArticleMain,
+  ListArticleP,
+  ListArticleLink,
+} from "./styles";
 
 export async function generateMetadata(): Promise<Metadata> {
   // SEO purpose
@@ -12,7 +18,7 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 const Blog = async () => {
-  const shorts = await getAllArticleSorts();
+  const shorts = await getAllArticlesSorts();
 
   return (
     <ListArticleMain>

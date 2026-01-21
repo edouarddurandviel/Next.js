@@ -30,9 +30,8 @@ const SignUpPage = () => {
 
           {state && state.error && (
             <ErrorContainer>
-                  <Errors errors={state.error} />
+              <Errors errors={state.error} />
             </ErrorContainer>
-        
           )}
 
           <InputGroup
@@ -49,7 +48,7 @@ const SignUpPage = () => {
             state={state && state.error}
             name="password"
           />
-          <Button disabled={pending}>{pending ? 'Submitting...' : 'Submit'}</Button>
+          <Button disabled={pending}>{pending ? "Submitting..." : "Submit"}</Button>
         </Form>
       </Centered>
     </Fragment>

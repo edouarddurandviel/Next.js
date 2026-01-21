@@ -30,6 +30,14 @@ export const getOneAnalytic = async (data: { id: string }): Promise<Analitics> =
   return resp[0] as Analitics;
 };
 
+export const updateOneAnalytic = async (id: string, data: Analitics): Promise<Analitics> => {
+  const resp = (await dbQuery("UPDATE analytics SET description = ? WHERE id = ?", [
+    data.description,
+    Number(id),
+  ])) as Analitics[];
+  return resp[0] as Analitics;
+};
+
 export const updateStatsFiltered = async (data: {
   id: number;
   task: string;
