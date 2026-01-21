@@ -1,7 +1,7 @@
 "use client";
-import { useAppDispatch } from "@app/storeSlices/hooks";
+import { useAppDispatch } from "@app/store/hooks";
 import { ButtonView, ItemLink, ItemList, ItemListDescription, ItemListTitle } from "./styles";
-import { startEvent } from "@app/storeSlices/uiEvents/slices";
+import { startEvent } from "@app/store/uiEvents/slices";
 import { Analitics } from "@app/types/types";
 
 const Index = ({ stat }: { stat: Analitics }) => {

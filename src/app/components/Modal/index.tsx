@@ -1,7 +1,7 @@
 "use client";
-import { useAppDispatch } from "@app/storeSlices/hooks";
+import { useAppDispatch } from "@app/store/hooks";
 import { ModalPlaceholder, Modal, ButtonView } from "./styles";
-import { stopEvent } from "@app/storeSlices/uiEvents/slices";
+import { stopEvent } from "@app/store/uiEvents/slices";
 
 const Index = ({ children }: { children: React.ReactNode }) => {
   const dispatch = useAppDispatch();

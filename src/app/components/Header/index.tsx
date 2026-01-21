@@ -2,7 +2,7 @@
 import { useSelector } from "react-redux";
 import HeaderMenu from "./HeaderMenu";
 import { HeaderInfo } from "./styles";
-import { RootState } from "@app/storeSlices";
+import { RootState } from "@app/store";
 import Modal from "../Modal";
 
 const Header = () => {

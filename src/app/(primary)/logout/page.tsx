@@ -1,6 +1,6 @@
 "use client";
-import { useAppDispatch } from "@app/storeSlices/hooks";
-import { logout } from "@app/storeSlices/user/thunks";
+import { useAppDispatch } from "@app/store/hooks";
+import { logout } from "@app/store/user/thunks";
 import { useEffect } from "react";
 import { redirect } from "next/navigation";
 import { resetAction } from "@app/actions";
