@@ -79,3 +79,8 @@ export type QueryErrors = {
   key: number;
   message: string;
 };
+
+export interface FetchError extends Error {
+  info: string;
+  status: number;
+}

@@ -1,3 +1,5 @@
+// Page router, when api is created in page folder
+// dashboard/api/analytics/[id]/route.ts
 export async function fetcher<T>(url: string, options?: RequestInit): Promise<T> {
   try {
     const result = await fetch(url, {
