@@ -3,7 +3,9 @@ import { SWRConfig } from "swr";
 import StoreProvider from "./storeProvider";
 import "bootstrap/dist/css/bootstrap.min.css";
 
+
 const RootLayout = ({ children }: { children: React.ReactNode }) => {
+
   return (
     <StoreProvider>
       <SWRConfig
@@ -12,11 +14,7 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
             // send error to database,
             // Show error messages.
             alert(error);
-          },
-          // provider: () => {
-          //   // store data localy
-          //   new Map()
-          // }
+          }
         }}
       >
         <html lang="en">

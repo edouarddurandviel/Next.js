@@ -1,0 +1,30 @@
+# Node modules (install in Docker, not from host)
+node_modules
+npm-debug.log
+yarn-error.log
+pnpm-lock.yaml
+
+# Local environment files (do NOT bake secrets)
+.env
+.env.local
+.env.development
+.env.test
+.env.production.local
+
+# Next.js build outputs (we build inside Docker)
+.next
+out
+
+# Logs / coverage / editor files
+*.log
+coverage/
+.vscode/
+.idea/
+.DS_Store
+
+# Git metadata
+.git
+.gitignore
+
+# Optional: any extra Docker dev files
+Dockerfile.dev

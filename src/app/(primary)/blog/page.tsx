@@ -8,6 +8,8 @@ import {
   ListArticleLink,
 } from "./styles";
 
+export const dynamic = 'force-dynamic';
+
 export async function generateMetadata(): Promise<Metadata> {
   // SEO purpose
   const stats = await getStats();

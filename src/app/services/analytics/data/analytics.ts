@@ -1,5 +1,5 @@
 import { dbQuery, transaction } from "@app/lib/db";
-import pool from "@app/lib/maria-db-pool";
+import { getPool } from "@app/lib/maria-db-pool";
 import { Analitics } from "@app/types/types";
 
 type Stat = {
@@ -46,6 +46,7 @@ export const updateStatsFiltered = async (data: {
 
   // Full transaction
   ///////////////////
+  const pool = await getPool()
   const conn = await pool.getConnection();
 
   try {

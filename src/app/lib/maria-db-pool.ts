@@ -5,19 +5,23 @@ declare global {
 }
 
 const access: PoolConfig = {
-  host: "localhost",
-  database: "mydb",
-  user: "myuser",
-  password: "mypassword",
+  host: "mariadb",
+  database: process.env.MARIADB_DATABASE,
+  user: process.env.MARIADB_USER,
+  password: process.env.MARIADB_PASSWORD,
   port: 3307,
   connectionLimit: 5,
   connectTimeout: 10000,
 };
 
-const pool = global.mariadbPool ?? mariadb.createPool(access);
+let pool: mariadb.Pool | null = null
 
-if (process.env.NODE_ENV !== "production") {
-  global.mariadbPool = pool;
+export function getPool(): mariadb.Pool {
+  if (!pool) {
+   
+        pool = mariadb.createPool(access)
+   
+  }
+
+  return pool
 }
-
-export default pool;

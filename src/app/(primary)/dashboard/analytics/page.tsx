@@ -3,6 +3,8 @@ import { Metadata } from "next";
 import { Notes } from "./styles";
 import ItemList from "@app/components/ItemList";
 
+export const dynamic = 'force-dynamic'
+
 export async function generateMetadata(): Promise<Metadata> {
   // SEO purpose
   const stats = await getStats();

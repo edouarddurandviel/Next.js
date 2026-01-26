@@ -4,12 +4,13 @@ services:
     container_name: mariadb-database
     restart: always
     environment:
+    
       MARIADB_ROOT_PASSWORD: edouard
       MARIADB_DATABASE: mydb
       MARIADB_USER: myuser
       MARIADB_PASSWORD: mypassword
     healthcheck:
-      test: ["CMD", "mariadb-admin", "ping", "-h", "localhost"]
+      test: ["CMD", "mariadb-admin", "ping", "-h", "mariadb", "-u","myuser", "-p mypassword"]
       interval: 5s
       timeout: 5s
       retries: 5
@@ -17,6 +18,7 @@ services:
       - "3307:3306"
     volumes:
       - mariadb_data:/var/lib/mysql
+      - ./db/dump-mydb-202601251136.sql:/docker-entrypoint-initdb.d/dump.sql
     networks:
       - mariadb_net
 

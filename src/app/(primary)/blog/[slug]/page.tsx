@@ -3,6 +3,8 @@ import { ListArticleH1 } from "../styles";
 import { getArticleContent } from "@app/services/blog/data/articles";
 import { ArticleBody, LinkBack, ArticleMain } from "./styles";
 
+export const dynamic = 'force-dynamic';
+
 export async function generateMetadata(): Promise<Metadata> {
   const article = await { title: "article 1", content: "content" };
   return {

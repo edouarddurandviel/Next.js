@@ -1,7 +1,8 @@
 import { PoolConnection } from "mariadb";
-import pool from "./maria-db-pool";
+import { getPool } from "./maria-db-pool";
 
 export const dbQuery = async (sql: string, params?: unknown[]) => {
+  const pool = getPool()
   const connexion = await pool.getConnection();
   try {
     const result = await connexion.query(sql, params && params);
@@ -16,6 +17,7 @@ export const dbQuery = async (sql: string, params?: unknown[]) => {
 export const transaction = async (
   callback: (connexion: PoolConnection) => Promise<unknown>,
 ): Promise<unknown> => {
+    const pool = getPool()
   const connexion = await pool.getConnection();
   try {
     await connexion.beginTransaction();
