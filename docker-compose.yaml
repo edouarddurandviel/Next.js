@@ -4,13 +4,12 @@ services:
     container_name: mariadb-database
     restart: always
     environment:
-    
       MARIADB_ROOT_PASSWORD: edouard
       MARIADB_DATABASE: mydb
       MARIADB_USER: myuser
       MARIADB_PASSWORD: mypassword
     healthcheck:
-      test: ["CMD", "mariadb-admin", "ping", "-h", "mariadb", "-u","myuser", "-p mypassword"]
+      test: ["CMD", "mariadb-admin", "ping", "-h", "mariadb", "-umyuser", "-pmypassword"]
       interval: 5s
       timeout: 5s
       retries: 5
@@ -25,19 +24,19 @@ services:
   next:
     container_name: next-application
     image: node:22.22.0
-    working_dir: /usr/src/app
+    working_dir: /app
     build:
       context: .
     ports:
       - "3000:3000"
     volumes:
-      - .:/usr/src/app
-      - /usr/src/app/node_modules
+      - /app/node_modules
     environment:
-      NODE_ENV: production
-      NEXT_TELEMETRY_DISABLED: "1"
-      DATABASE_URL: mysql://myuser:mypassword@mariadb:3307/mydb
-    restart: always
+      MARIADB_ROOT_PASSWORD: edouard
+      MARIADB_DATABASE: mydb
+      MARIADB_USER: myuser
+      MARIADB_PASSWORD: mypassword
+    restart: unless-stopped
     depends_on:
       mariadb:
         condition: service_healthy

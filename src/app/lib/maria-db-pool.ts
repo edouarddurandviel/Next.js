@@ -5,11 +5,10 @@ declare global {
 }
 
 const access: PoolConfig = {
-  host: "mariadb",
-  database: process.env.MARIADB_DATABASE,
-  user: process.env.MARIADB_USER,
-  password: process.env.MARIADB_PASSWORD,
-  port: 3307,
+  host: process.env.DB_HOST || "mariadb",
+  database: process.env.MARIADB_DATABASE!,
+  user: process.env.MARIADB_USER!,
+  password: process.env.MARIADB_PASSWORD!,
   connectionLimit: 5,
   connectTimeout: 10000,
 };
