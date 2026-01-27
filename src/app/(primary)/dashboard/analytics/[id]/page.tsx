@@ -1,6 +1,6 @@
 "use client";
 import { useParams } from "next/navigation";
-import { ButtonView, ItemList, ItemListDescription, ItemListTitle } from "../styles";
+import { ButtonView, ItemList, ItemListDescription, ItemListTitle, Notes, ItemLink, TaskTitle } from "../styles";
 import { useOneAnalyticHook } from "@app/services/analytics/use-analytics";
 
 const AnalyticsCompanyPage = () => {
@@ -9,7 +9,11 @@ const AnalyticsCompanyPage = () => {
 
   return (
     <>
-      <div>Task description</div>
+      <Notes>
+        <div><strong>Client side</strong> rendering</div>
+        <div>The detail page is fetched with SWR through restAPI app/api/analytics</div>
+      </Notes>
+      <TaskTitle><ItemLink href={`/dashboard/analytics`}>Back</ItemLink> Task description</TaskTitle>
       <div>{error && <code>{error}</code>}</div>
       <div>
         {isLoading && "Loading..."}
@@ -26,7 +30,7 @@ const AnalyticsCompanyPage = () => {
                 });
               }}
             >
-              Change item date
+              Update item
             </ButtonView>
           </ItemList>
         )}

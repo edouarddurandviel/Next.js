@@ -30,6 +30,7 @@ export function useOneAnalyticHook(params: string) {
   );
 
   const updateAnalytic = async (data: Analitics) => {
+    // production mode revelidate GET then PUT
     await fetchUpdateOneAnalytic(data);
   };
 

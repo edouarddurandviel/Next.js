@@ -21,9 +21,8 @@ const AnalyticsPage = async () => {
   return (
     <>
       <Notes>
-        <div>My personal list</div>
-        <div>Page buy default first rendering on the server side.</div>
-        <div>View detail is fetched through restAPI</div>
+        <div>Server side rendering</div>
+        <div>The detail page is fetched with SWR through restAPI app/api/analytics</div>
       </Notes>
       <nav>
         {statsApiGET &&

@@ -46,6 +46,7 @@ export const ButtonView = styled.div`
   font-size: 10px;
   background-color: #ff5e5b;
   color: white;
+  margin: 0 0 0 10px;
 `;
 
 export const Notes = styled.div`
