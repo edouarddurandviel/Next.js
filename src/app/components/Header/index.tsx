@@ -9,7 +9,6 @@ import Modal from "../Modal";
 const Header = () => {
   const { userLogin, loading } = useSelector((store: RootState) => store.user);
   const { events } = useSelector((store: RootState) => store.events);
-console.log(userLogin)
  
   return (
     <>
