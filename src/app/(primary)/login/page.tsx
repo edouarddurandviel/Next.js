@@ -7,7 +7,7 @@ import { RootState } from "@app/store";
 import { useAppDispatch } from "@app/store/hooks";
 import { signIn } from "@app/store/user/thunks";
 import { Input } from "@app/components/Forms";
-import { Button, Centered, Form } from "@app/styles/template";
+import { Button, Centered, Form, Notes} from "@app/styles/template";
 
 const LoginPage = () => {
   const dispatch = useAppDispatch();
@@ -48,7 +48,8 @@ const LoginPage = () => {
       <Centered>
         <Form onSubmit={handleSubmit(submitForm)}>
           <h1>Signin</h1>
-          <p>react-hook-form, with redux-toolkit and server side query and validation</p>
+          <Notes><strong>React-Hook-Form</strong>, with <strong>redux-toolkit dispatch, createAsyncThunk </strong> 
+           and server side queryAction and data validation</Notes>
 
           <Input
             control={control as any}

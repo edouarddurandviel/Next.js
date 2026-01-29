@@ -60,11 +60,3 @@ export const ButtonView = styled.div`
   margin: 0 0 0 10px;
 `;
 
-export const Notes = styled.div`
-  color: #200202;
-  width: 100%;
-  padding: 10px;
-  background: #ff5e5b;
-  border: 1px solid #ff5e5b;
-  margin: 10px 0;
-`;

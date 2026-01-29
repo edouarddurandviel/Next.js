@@ -104,6 +104,15 @@ export const Label = styled.label`
   font-size: 16px;
 `;
 
+export const Notes = styled.div`
+  color: #200202;
+  width: 100%;
+  padding: 10px;
+  background: #ff5e5b;
+  border: 1px solid #ff5e5b;
+  margin: 10px 0;
+`;
+
 // export const InputGroup = styled.label`
 //     display: block;
 //     margin-bottom: 8px;

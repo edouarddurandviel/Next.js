@@ -35,25 +35,30 @@ export default async function signInAction(formData: FormData) {
       if (await argon2.verify(fetchedUser.password, user.value.password)) {
         const payload = {
           userId: user.value.id,
+          userEmail: user.value.email,
         };
 
-        const secret = user.value.password;
+        const secret = "some-secret-qfdf6546qsdf5dfsqdf54";
         const token = jsonwebtoken.sign(payload, secret, { expiresIn: "1h" });
+        const maxAge = 60 * 60 * 24 * 7;
+        const path = "/";
 
         const cookieStore = await cookies();
         cookieStore.set("jwt", token, {
           httpOnly: true,
           secure: true,
-          maxAge: 60 * 60 * 24 * 7, // One week
-          path: "/",
+          maxAge: maxAge, // One week
+          path: path,
         });
 
-        const data: UserSignin = {
-          email: user.value.email,
-          password: user.value.password,
-        };
+        cookieStore.set("user", JSON.stringify(user.value.email), {
+          httpOnly: false,
+          secure: true,
+          maxAge: maxAge, // One week
+          path: path,
+        });
 
-        return { user: data };
+        return { user: payload };
       } else {
         return {
           error: [{ key: "password", message: "Wrong password" }],

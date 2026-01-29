@@ -1,6 +1,7 @@
 "use client";
 import { useParams } from "next/navigation";
-import { ButtonView, ItemList, ItemListDescription, ItemListTitle, Notes, ItemLink, TaskTitle } from "../styles";
+import { ButtonView, ItemList, ItemListDescription, ItemListTitle, ItemLink, TaskTitle } from "../styles";
+import { Notes } from "@app/styles/template"
 import { useOneAnalyticHook } from "@app/services/analytics/use-analytics";
 
 const AnalyticsCompanyPage = () => {
