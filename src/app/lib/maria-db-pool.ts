@@ -11,15 +11,19 @@ const config = process.env.NODE_ENV.toString() === "development" ?
   user: "myuser",
   password: "mypassword",
   port: 3307,
-  connectionLimit: 5,
-  connectTimeout: 10000,
+  connectionLimit: 20,
+  acquireTimeout: 10000,
+  idleTimeout: 30000,
+  multipleStatements: false
 } : {
   host: (process.env.DB_HOST || "mariadb"),
   database: process.env.MARIADB_DATABASE!,
   user: process.env.MARIADB_USER!,
   password: process.env.MARIADB_PASSWORD!,
-  connectionLimit: 5,
-  connectTimeout: 10000,
+  connectionLimit: 20,
+  acquireTimeout: 10000,
+  idleTimeout: 30000,
+  multipleStatements: false
 }
 
 
