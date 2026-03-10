@@ -9,12 +9,12 @@ export async function generateMetadata(): Promise<Metadata> {
   };
 }
 
-const Default = async ({ params }: { params: Promise<{ article: string }> }) => {
-  const { article } = await params;
+const Default = async ({ params }: { params: Promise<{ slug: string }> }) => {
+  const { slug } = await params;
 
   return (
     <div>
-      <h1>Publicité default: {article}</h1>
+      <h1>Publicité default: {slug}</h1>
     </div>
   );
 };

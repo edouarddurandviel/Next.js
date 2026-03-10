@@ -1,5 +1,6 @@
 import Link from "next/link";
 import styled from "styled-components";
+import Image from 'next/image';
 
 export const ListArticleMain = styled.main`
   margin: 20px 0;
@@ -35,3 +36,9 @@ export const ListArticleH1 = styled.h1`
 export const ListArticleP = styled.p`
   margin: 0;
 `;
+
+export const ListArticleImage = styled(Image)`
+  overflow: hidden;
+  margin: 0 0 10px 0;
+  box-sizing: border-box;
+`

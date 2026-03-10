@@ -1,9 +1,10 @@
-const Pub = async ({ params }: { params: Promise<{ article: string }> }) => {
-  const { article } = await params;
+const Pub = async ({ params }: { params: Promise<{ slug: string }> }) => {
 
+  const { slug } = await params;
+  
   return (
     <div>
-      <h1>Publicité {article}</h1>
+      <h1>Publicité page {slug}</h1>
     </div>
   );
 };
