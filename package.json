@@ -23,6 +23,7 @@
     "react-dom": "19.2.3",
     "react-hook-form": "^7.71.1",
     "react-redux": "^9.2.0",
+    "redux-persist": "^6.0.0",
     "sass": "^1.97.2",
     "sass-embedded": "^1.97.2",
     "semantic-ui-react": "^2.1.5",

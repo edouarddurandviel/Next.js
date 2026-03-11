@@ -1,5 +1,5 @@
 import { userIdShema } from "@app/schemas/user";
-import { getOneAnalytic, updateOneAnalytic } from "@app/services/analytics/data/analytics";
+import { getOneAnalytic, updateOneAnalytic } from "@app/lib/queries/analytics";
 import { NextRequest } from "next/server";
 
 // GET POST PATCH DELETE PUT exported

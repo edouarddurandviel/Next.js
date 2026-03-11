@@ -1,6 +1,6 @@
 // hide API keys, interact with a DB, or process sensitive logic.
 // without params
-import { getAllAnalytics } from "@app/services/analytics/data/analytics";
+import { getAllAnalytics } from "@app/lib/queries/analytics";
 import { NextRequest } from "next/server";
 
 export async function GET(_: NextRequest, ctx: RouteContext<"/api/analytics">) {

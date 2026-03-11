@@ -1,7 +1,7 @@
 "use server";
 import { errorMessages } from "@app/schemas/errorMessages";
 import { userSchemas } from "@app/schemas/user";
-import { getUserWithEmail } from "@app/services/user/data/user";
+import { getUserWithEmail } from "@app/lib/queries/user";
 import { UserSignin } from "@app/types/types";
 import * as argon2 from "argon2";
 import * as jsonwebtoken from "jsonwebtoken";

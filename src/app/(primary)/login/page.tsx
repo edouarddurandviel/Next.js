@@ -8,6 +8,7 @@ import { useAppDispatch } from "@app/store/hooks";
 import { signIn } from "@app/store/user/thunks";
 import { Input } from "@app/components/Forms";
 import { Button, Centered, Form, Notes} from "@app/styles/template";
+import { createCacheData } from "@app/lib/storageCache";
 
 const LoginPage = () => {
   const dispatch = useAppDispatch();
@@ -28,11 +29,12 @@ const LoginPage = () => {
 
   const submitForm = useCallback(
     (data: IFormInput) => {
-      const dataF = new FormData();
+      const formData = new FormData();
       Object.entries(data).forEach(([key, value]) => {
-        dataF.append(key, value);
+        formData.append(key, value);
       });
-      dispatch(signIn(dataF));
+      dispatch(signIn(formData));
+      createCacheData(data)
     },
     [dispatch],
   );

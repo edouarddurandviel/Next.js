@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 import Image from 'next/image';
 import { ListArticleH1 } from "../styles";
-import { getArticleContent } from "@app/services/blog/data/articles";
+import { getArticleContent } from "@app/lib/queries/articles";
 import { ArticleBody, LinkBack, ArticleMain } from "./styles";
 
 export const dynamic = 'force-dynamic';

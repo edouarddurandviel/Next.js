@@ -2,7 +2,7 @@
 import * as argon2 from "argon2";
 import { errorMessages } from "@app/schemas/errorMessages";
 import type { UserAccount } from "@app/types/types";
-import { signUp } from "@app/services/user/data/user";
+import { signUp } from "@app/lib/queries/user";
 import { userSchemas } from "@app/schemas/user";
 import { redirect } from "next/navigation";
 

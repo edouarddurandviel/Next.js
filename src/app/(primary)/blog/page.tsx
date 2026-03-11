@@ -1,4 +1,4 @@
-import { getAllArticlesSorts, getStats } from "@app/services/blog/data/articles";
+import { getAllArticlesSorts, getStats } from "@app/lib/queries/articles";
 import { Metadata } from "next";
 import {
   ListArticle,
