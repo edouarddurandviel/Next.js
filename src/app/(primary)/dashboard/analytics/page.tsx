@@ -1,4 +1,4 @@
-import { getAllAnalytics, getStats } from "@app/services/analytics/data/analytics";
+import { getAllAnalytics, getStats } from "@app/lib/queries/analytics";
 import { Metadata } from "next";
 import { Notes } from "@app/styles/template";
 import ItemList from "@app/components/ItemList";

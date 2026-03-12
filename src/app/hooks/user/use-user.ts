@@ -1,7 +1,7 @@
 import useSWR from "swr";
 import useSWRMutation from "swr/mutation";
 import { UserSignin } from "@app/types/types";
-import { signIn, fetchUserWithEmail, createUserProfil } from "@app/services/user/api-user";
+import { signIn, fetchUserWithEmail, createUserProfil } from "@app/hooks/user/api-user";
 
 export function useSignUpHook(user: UserSignin) {
   const { trigger, data, error, isMutating } = useSWRMutation("api/user", () => signIn({ user }));
