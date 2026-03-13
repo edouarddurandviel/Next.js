@@ -15,5 +15,4 @@ export const BlogMenu = [
 
  export const Dashboard = [
     { label: "Agile", url: "/dashboard/analytics" },
-    { label: "Settings", url: "/dashboard/settings" },
   ];

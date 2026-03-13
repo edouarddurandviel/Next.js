@@ -4,7 +4,7 @@ declare global {
   var mariadbPool: mariadb.Pool | undefined;
 }
 
-const config = process.env.NODE_ENV.toString() === "development" ? 
+const config = (process.env.NODE_ENV.toString() === "development") ? 
 {
   host: "localhost",
   database: "mydb",
