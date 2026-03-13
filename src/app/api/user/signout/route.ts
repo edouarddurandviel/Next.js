@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 
 export async function GET(_: NextRequest) {
   try {
+    console.log(_)
     const resp = NextResponse.json({ message: "Logged out" });
 
     resp.cookies.delete("jwt")

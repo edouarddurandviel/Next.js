@@ -39,6 +39,7 @@ const HeaderMenu = () => {
 
         <LoggoutButton onClick={async () => {
             const data = await trigger()
+            console.log(data)
             if(data.user) createCacheData(data.user)
             if(!data.error) router.push("/")
           }}

@@ -2,8 +2,10 @@ import useSWR from "swr";
 import useSWRMutation from "swr/mutation";
 import { signIn, fetchUserWithEmail, createUserProfil, signOut } from "@app/hooks/user/api-user";
 
+const domain = "http://localhost:3000"
+
 export function useSignUpHook() {
-  const { trigger, data, error, isMutating } = useSWRMutation("api/user/signin", signIn);
+  const { trigger, data, error, isMutating } = useSWRMutation(domain+"/api/user/signin", signIn);
 
   return {
     trigger,
@@ -14,7 +16,7 @@ export function useSignUpHook() {
 }
 
 export function useSignOutHook() {
-  const { trigger, data, error, isMutating } = useSWRMutation("api/user/signout", signOut);
+  const { trigger, data, error, isMutating } = useSWRMutation(domain+"/api/user/signout", signOut);
 
   return {
     trigger,
@@ -26,7 +28,7 @@ export function useSignOutHook() {
 
 export function useUserWithEmailHook(id: string) {
   const { data, error, isLoading, isValidating, mutate } = useSWR(
-    `api/user/${id}`,
+    domain+`api/user/${id}`,
     fetchUserWithEmail,
   );
 
@@ -53,7 +55,7 @@ export function useCreateUserHook() {
   };
 
   const { trigger, isMutating, data, error } = useSWRMutation(
-    "/api/user",
+    domain+"/api/user",
     createUserProfil,
     options,
   );
