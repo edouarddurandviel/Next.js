@@ -52,3 +52,22 @@ export const MenuHeader = styled.nav`
     color: white;
   }
 `;
+
+export const LoggoutButton = styled.button`
+    font-family: system-ui;
+    color: #ffffff;
+    font-weight: bold;
+    text-decoration: none;
+    border: none;
+    border-left: 1px solid #d4d4d4ff;
+    font-size: 15px;
+    width: 100%;
+    height: 40px;
+    align-items: center;
+    outline: none;
+    background-color: #ff5e5b;
+    &:hover{
+     background-color: #690909;
+      color: white;
+    }
+`

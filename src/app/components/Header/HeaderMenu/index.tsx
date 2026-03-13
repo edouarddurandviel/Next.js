@@ -1,12 +1,19 @@
 import Link from "next/link";
-import { usePathname } from "next/navigation";
-import { MenuHeader, MainMenu } from "./styles";
+import { usePathname, useRouter } from "next/navigation";
+import { MenuHeader, MainMenu, LoggoutButton } from "./styles";
+import { useSignOutHook } from "@app/hooks/user/use-user";
+import { createCacheData } from "@app/lib/storageCache";
 
 const HeaderMenu = () => {
+  const { trigger, error, isMutating } = useSignOutHook();
+  const router = useRouter()
+  
+
   const pathName = usePathname();
   const currentPath = (path: string) => {
     return pathName.startsWith(path) ? "current" : "";
   };
+
   return (
     <MainMenu>
       <MenuHeader>
@@ -30,9 +37,13 @@ const HeaderMenu = () => {
           Login
         </Link>
 
-        <Link key={6} href="/logout" className={currentPath("/logout")}>
-          Logout
-        </Link>
+        <LoggoutButton onClick={async () => {
+            const data = await trigger()
+            if(data.user) createCacheData(data.user)
+            if(!data.error) router.push("/")
+          }}
+        >{isMutating ? 'Loging out...' : error ? 'Try again' : 'Logout'}</LoggoutButton>
+       
       </MenuHeader>
     </MainMenu>
   );

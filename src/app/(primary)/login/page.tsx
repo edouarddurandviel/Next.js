@@ -1,14 +1,15 @@
 "use client";
-import { Fragment, useEffect } from "react";
+import { Fragment, useCallback } from "react";
 import { useForm } from "react-hook-form";
-import { redirect, RedirectType } from "next/navigation";
 import { Input } from "@app/components/Forms";
 import { Button, Centered, Form, Notes } from "@app/styles/template";
 import { useSignUpHook } from "@app/hooks/user/use-user";
-
+import { useRouter } from "next/navigation";
+import { createCacheData } from "@app/lib/storageCache";
 
 const LoginPage = () => {
   const { trigger, user, error, isMutating } = useSignUpHook();
+  const router = useRouter()
 
   type IFormInput = {
     email: string;
@@ -23,17 +24,13 @@ const LoginPage = () => {
     mode: "onChange",
   });
 
-  const submitForm = (inputData: IFormInput) => {
-      trigger(inputData);
-  };
+  const submitForm = useCallback(async (inputData: IFormInput) => {
+      const data = await trigger(inputData);
+      await createCacheData(data.user)
+      if(data) router.push("/dashboard")
 
-  useEffect(() => {
-    if (user && !user.error) {
-      redirect("/dashboard", RedirectType.push)
-    }
-  }, [user])
+  }, [trigger, router]);
 
- 
   return (
     <Fragment>
       <Centered>

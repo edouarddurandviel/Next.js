@@ -22,6 +22,7 @@ export default async function proxy(req: NextRequest) {
   }
 
   if (isProtectedRoute && !isAuth) {
+    console.log(new Date())
     return NextResponse.redirect(new URL("/", req.nextUrl));
   }
 

@@ -1,4 +1,5 @@
 import { fetchErrors } from "@app/lib/fetchErrors";
+import { createCacheData } from "@app/lib/storageCache";
 import { Analitics, UserAccount, UserSignin } from "@app/types/types";
 
 export async function signIn(key: string, { arg }: { arg: UserSignin }): Promise<UserAccount> {
@@ -19,7 +20,7 @@ export async function signIn(key: string, { arg }: { arg: UserSignin }): Promise
   }
 }
 
-export async function signOut(key: string): Promise<UserSignin> {
+export async function signOut(key: string): Promise<UserAccount> {
   try {
     const result = await fetch(key, {
       cache: 'no-store',

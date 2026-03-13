@@ -26,6 +26,5 @@ export const createCacheData = (data: unknown) => {
   const cache = JSON.parse(sessionStorage.getItem("session") || "[]");
   const map = new Map(cache);
   map.set("session", data);
-  console.log(data)
   sessionStorage.setItem("session", JSON.stringify(Array.from(map.entries())));
 };
