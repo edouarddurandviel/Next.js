@@ -29,15 +29,17 @@ export async function signIn(user: UserSignin): Promise<UserAccount | undefined>
         user: user,
         message: "Logged in !" 
       }
+
+
    
     } else {
       return {
-        error: [{ key: "password", message: "Wrong password" }],
+        error: [{message: "Wrong email or password" }],
       };
     }
   } else {
     return {
-      error: [{ key: "Credentials", message: "Wrong email or password" }],
+      error: [{message: "Wrong email or password" }],
     };
   }
 }

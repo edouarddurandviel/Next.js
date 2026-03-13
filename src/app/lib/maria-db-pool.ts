@@ -5,8 +5,7 @@ declare global {
 }
 
 const config =
-  (process.env.NODE_ENV.toString() === "development" || 
-  process.env.NODE_ENV.toString() === "production")
+  (process.env.NODE_ENV.toString() === "development" || process.env.NODE_ENV.toString() === "production")
     ? {
         host: "localhost",
         database: "mydb",

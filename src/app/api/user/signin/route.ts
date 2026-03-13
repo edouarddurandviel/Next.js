@@ -10,7 +10,7 @@ export async function POST(_: NextRequest) {
 
         if(result && result.cookieSet){
             const resp = NextResponse.json({ 
-                err: result.error ? result.error : false, 
+                error: result.error ? result.error : false, 
                 data: {
                     message: result.message,
                     user: result.user
@@ -27,8 +27,13 @@ export async function POST(_: NextRequest) {
                 })
                 return resp
             } 
-        } 
+        } else if(result && result.error) {
+            return NextResponse.json({error: result.error})
+        }
     } catch (error: unknown) {
-        return Response.json({ message: error });
+        return NextResponse.json(
+            { error: error instanceof Error ? error.message : "Unknown error" },
+            { status: 500 }
+        );
     }
 }

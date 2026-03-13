@@ -27,17 +27,27 @@ export type UserErrors = {
   message?: string;
   key?: string;
 };
-
 export type UserSignin = {
   email: string;
   password: string;
-  id?: number;
+  id?: string;
 };
 
 export type UserAccount = {
   user?: UserSignin;
-  cookieSet?: { token: string; maxAge: number; path: string };
+  cookieSet?: { 
+    token: string; 
+    maxAge: number; 
+    path: string 
+  };
   message?: string;
+  error?: UserErrors[];
+};
+
+export type UserSignIn = {
+  user?: {
+    email: string, 
+  }
   error?: UserErrors[];
 };
 
