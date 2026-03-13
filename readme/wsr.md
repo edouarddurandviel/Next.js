@@ -1,11 +1,13 @@
 ### Wrapper called fetcher
+
 ```js
-function fetcher(...args){
-    return fetch(...args).then(res => res.json())
+function fetcher(...args) {
+  return fetch(...args).then((res) => res.json());
 }
 ```
 
 ### Reusable with dedicated Hooks
+
 ```js
 function useUserHook (id){
 const {data, error, isLoading, isValidating, mutate} = useSWR(url/${id} || null, fetcher, options);
@@ -29,6 +31,7 @@ const {data, error, isLoading, isValidating, mutate} = useSWR(url/${id} || null,
 - url can be null for conditional fetching
 
 ### mutate
+
 - mutate the cached data
 
 ### Multiple args
@@ -36,16 +39,11 @@ const {data, error, isLoading, isValidating, mutate} = useSWR(url/${id} || null,
 - url is still the same but token changes
 - use an array or an object to keep all in one args
 - useSWR dependent queries cascading errors
+
 ```js
-const { data: user } = useSWR(
-    [url, token],
-    ([url, token]) => fetchWithToken(url, token)
-)
-or
-const { data: user } = useSWR(
-    { url: url, args: user},
-    fetchers
-)
+const { data: user } = useSWR([url, token], ([url, token]) => fetchWithToken(url, token));
+or;
+const { data: user } = useSWR({ url: url, args: user }, fetchers);
 ```
 
 ## Axios vs fetch API
@@ -55,29 +53,33 @@ const { data: user } = useSWR(
 - many valuable options with axios
 
 ### Global configuration context SWRConfig
-- centralized actions 
+
+- centralized actions
 - enabled snacks or alerts message ui popup
 
 ### cache data
+
 - localStorate
 
 ### Middleware
+
 - execute before and after useSWR
 
 ### Mutations
+
 - global mutate which uses the key and values
 - Bound mutator for a specific key
 
 #### global mutate
+
 ```js
-const { mutate } = useSWRConfig()
-mutate(key, data, options)
+const { mutate } = useSWRConfig();
+mutate(key, data, options);
 ```
 
 #### bound mutate
+
 ```js
-const { data, mutate } = useSWR('/api/user', fetcher)
-mutate({ ...data, name: newName })
+const { data, mutate } = useSWR("/api/user", fetcher);
+mutate({ ...data, name: newName });
 ```
-
-

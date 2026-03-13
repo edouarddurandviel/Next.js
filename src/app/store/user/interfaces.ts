@@ -18,7 +18,7 @@ export type UserSignin = {
 
 export type UserAccount = {
   userLogin: {
-    user: UserSignin | {userId: string, email: string;};
+    user: UserSignin | { userId: string; email: string };
     error?: UserErrors[];
   };
   loading: boolean;

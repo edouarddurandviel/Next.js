@@ -44,7 +44,7 @@ export const TaskTitle = styled.h2`
   font-size: 16px;
   line-height: 20px;
   font-weight: 500;
-`
+`;
 
 export const ButtonView = styled.div`
   display: block;
@@ -59,4 +59,3 @@ export const ButtonView = styled.div`
   color: white;
   margin: 0 0 0 10px;
 `;
-

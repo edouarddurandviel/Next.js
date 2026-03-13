@@ -1,5 +1,5 @@
 import { userIdShema } from "@app/schemas/user";
-import { createSettings } from "@app/services/settings";
+import { createSettings } from "@app/hooks/settings";
 import { NextApiRequest, NextApiResponse } from "next";
 
 export const config = {

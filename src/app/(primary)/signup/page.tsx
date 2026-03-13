@@ -37,14 +37,14 @@ const SignUpPage = () => {
           <InputGroup
             label="Email"
             type="text"
-            value={(state && state.data.email) || ""}
+            value={(state && state.user && state.user.email) || ""}
             state={state && state.error}
             name="email"
           />
           <InputGroup
             label="Password"
             type="text"
-            value={(state && state.data.password) || ""}
+            value={(state && state.user && state.user.password) || ""}
             state={state && state.error}
             name="password"
           />

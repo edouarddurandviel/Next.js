@@ -1,14 +1,16 @@
 import { fetchErrors } from "@app/lib/fetchErrors";
-import { Analitics, UserSignin } from "@app/types/types";
+import { Analitics, UserAccount, UserSignin } from "@app/types/types";
 
-export async function signIn({ user }: { user: UserSignin }): Promise<UserSignin[] | string> {
+export async function signIn(key: string, { arg }: { arg: UserSignin }): Promise<UserAccount> {
   try {
-    const result = await fetch("api/user", {
+    const result = await fetch(key, {
+      cache: 'no-store',
+      credentials: 'include',
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(user),
+      body: JSON.stringify(arg),
     }).then((res) => res.json());
 
     return result;
@@ -17,9 +19,28 @@ export async function signIn({ user }: { user: UserSignin }): Promise<UserSignin
   }
 }
 
-export async function fetchUserWithEmail(id: string): Promise<Analitics> {
+export async function signOut(key: string): Promise<UserSignin> {
   try {
-    const result = await fetch(`/api/analytics/${id}`, {
+    const result = await fetch(key, {
+      cache: 'no-store',
+      credentials: "include",
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }).then((res) => res.json());
+
+    return result;
+  } catch (e: unknown) {
+    throw fetchErrors(e);
+  }
+}
+
+export async function fetchUserWithEmail(key: string): Promise<Analitics> {
+  try {
+    const result = await fetch(key, {
+      cache: 'no-store',
+      credentials: 'include',
       method: "GET",
     }).then((res) => res.json());
     return result;
@@ -28,9 +49,11 @@ export async function fetchUserWithEmail(id: string): Promise<Analitics> {
   }
 }
 
-export async function createUserProfil(url: string) {
+export async function createUserProfil(key: string) {
   try {
-    const result = await fetch(url, {
+    const result = await fetch(key, {
+      cache: 'no-store',
+      credentials: 'include',
       method: "POST",
     });
     return result;

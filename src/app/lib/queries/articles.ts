@@ -42,7 +42,7 @@ export const updateArticleFiltered = async (data: {
 
   // Full transaction
   ///////////////////
-  const pool = await getPool()
+  const pool = await getPool();
   const conn = await pool.getConnection();
   try {
     const res = await transaction(async () => {

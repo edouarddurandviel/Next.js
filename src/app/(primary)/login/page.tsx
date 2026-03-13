@@ -1,18 +1,14 @@
 "use client";
-import { Fragment, useCallback, useEffect } from "react";
+import { Fragment, useEffect } from "react";
 import { useForm } from "react-hook-form";
-import { useSelector } from "react-redux";
-import { redirect } from "next/navigation";
-import { RootState } from "@app/store";
-import { useAppDispatch } from "@app/store/hooks";
-import { signIn } from "@app/store/user/thunks";
+import { redirect, RedirectType } from "next/navigation";
 import { Input } from "@app/components/Forms";
-import { Button, Centered, Form, Notes} from "@app/styles/template";
-import { createCacheData } from "@app/lib/storageCache";
+import { Button, Centered, Form, Notes } from "@app/styles/template";
+import { useSignUpHook } from "@app/hooks/user/use-user";
+
 
 const LoginPage = () => {
-  const dispatch = useAppDispatch();
-  const { userLogin, loading } = useSelector((store: RootState) => store.user);
+  const { trigger, user, error, isMutating } = useSignUpHook();
 
   type IFormInput = {
     email: string;
@@ -27,31 +23,28 @@ const LoginPage = () => {
     mode: "onChange",
   });
 
-  const submitForm = useCallback(
-    (data: IFormInput) => {
-      const formData = new FormData();
-      Object.entries(data).forEach(([key, value]) => {
-        formData.append(key, value);
-      });
-      dispatch(signIn(formData));
-      createCacheData(data)
-    },
-    [dispatch],
-  );
+  const submitForm = (inputData: IFormInput) => {
+      trigger(inputData);
+  };
 
   useEffect(() => {
-    if (userLogin && !userLogin.error) {
-      redirect("/dashboard");
+    if (user && !user.error) {
+      redirect("/dashboard", RedirectType.push)
     }
-  }, [userLogin]);
+  }, [user])
 
+ 
   return (
     <Fragment>
       <Centered>
+        {error}
         <Form onSubmit={handleSubmit(submitForm)}>
           <h1>Signin</h1>
-          <Notes><strong>React-Hook-Form</strong>, with <strong>redux-toolkit dispatch, createAsyncThunk </strong> 
-           and server side queryAction and data validation</Notes>
+          <Notes>
+            <strong>React-Hook-Form</strong>, with{" "}
+            <strong>SWR api and hooks</strong>
+            and server side data validation
+          </Notes>
 
           <Input
             control={control as any}
@@ -65,7 +58,7 @@ const LoginPage = () => {
             name="password"
             rules={{ required: true }}
           />
-          <Button>{loading ? "Submitting..." : "Submit"}</Button>
+          <Button>{isMutating ? "Submitting..." : "Submit"}</Button>
         </Form>
       </Centered>
     </Fragment>

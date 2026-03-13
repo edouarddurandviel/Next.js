@@ -1,21 +1,18 @@
 "use client";
-import { useAppDispatch } from "@app/store/hooks";
-import { logout } from "@app/store/user/thunks";
 import { useEffect } from "react";
 import { redirect } from "next/navigation";
-import { resetAction } from "@app/actions";
 import { createCacheData } from "@app/lib/storageCache";
+import { useSignOutHook } from "@app/hooks/user/use-user";
 
 const LogoutPage = () => {
-  const dispatch = useAppDispatch();
+  const { trigger, data, error, isMutating } = useSignOutHook();
 
   useEffect(() => {
-    dispatch(resetAction());
-    dispatch(logout());
-    createCacheData(null)
-   
+    trigger();
+    createCacheData(null);
     redirect("/");
-  }, [dispatch, redirect]);
+
+  }, [trigger, data]);
 
   return;
 };

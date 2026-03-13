@@ -35,8 +35,10 @@ export type UserSignin = {
 };
 
 export type UserAccount = {
-  data: UserSignin;
-  error: UserErrors[];
+  user?: UserSignin;
+  cookieSet?: { token: string; maxAge: number; path: string };
+  message?: string;
+  error?: UserErrors[];
 };
 
 export type User = {
@@ -84,4 +86,3 @@ export interface FetchError extends Error {
   info: string;
   status: number;
 }
-

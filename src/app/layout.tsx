@@ -5,14 +5,13 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { useEffect, useState } from "react";
 import { sessionStorageProvider } from "./lib/storageCache";
 
-
 const RootLayout = ({ children }: { children: React.ReactNode }) => {
-  const [provider] = useState<Map<string, object>>(() => sessionStorageProvider())
-  const {cache} = useSWRConfig()
+  const [provider] = useState<Map<string, object>>(() => sessionStorageProvider());
+  const { cache } = useSWRConfig();
 
   useEffect(() => {
-    console.log(cache)
-  })
+    console.log(cache);
+  });
 
   return (
     <StoreProvider>

@@ -9,7 +9,7 @@ import {
   ListArticleImage,
 } from "./styles";
 
-export const dynamic = 'force-dynamic';
+export const dynamic = "force-dynamic";
 
 export async function generateMetadata(): Promise<Metadata> {
   // SEO purpose
@@ -29,13 +29,13 @@ const Blog = async () => {
       {shorts &&
         shorts.map((short) => (
           <ListArticle key={short.id}>
-             <ListArticleImage
-                src="https://placehold.co/600x400/ff5e5b/white"
-                alt={short.title}
-                width={60}
-                height={40}
-                unoptimized
-              />
+            <ListArticleImage
+              src="https://placehold.co/600x400/ff5e5b/white"
+              alt={short.title}
+              width={60}
+              height={40}
+              unoptimized
+            />
             <ListArticleH1>{short.title}</ListArticleH1>
             <ListArticleP>{short.short}</ListArticleP>
             <ListArticleLink href={`/blog/${short.slug}`}>View page</ListArticleLink>

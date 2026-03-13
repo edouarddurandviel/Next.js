@@ -2,6 +2,8 @@ import { FetchError } from "@app/types/types";
 
 export async function apiFetch<T>(url: string, options?: RequestInit): Promise<T> {
   const res = await fetch(url, {
+      cache: 'no-store',
+      credentials: 'include',
     headers: { "Content-Type": "application/json" },
     ...options,
   });

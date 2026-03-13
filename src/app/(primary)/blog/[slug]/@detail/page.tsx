@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 import Link from "next/link";
 
-export const dynamic = 'force-dynamic';
+export const dynamic = "force-dynamic";
 
 export async function generateMetadata(): Promise<Metadata> {
   const article = await { title: "article 1", content: "content" };

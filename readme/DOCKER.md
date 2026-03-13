@@ -14,15 +14,16 @@ docker exec -it mongodb mongosh -u root -p password --authenticationDatabase adm
 
 ### Notes
 
-* `-it` gives you an interactive terminal
-* Replace `mongodb` with:
+- `-it` gives you an interactive terminal
+- Replace `mongodb` with:
 
   ```bash
   docker ps
   ```
 
   to find the actual container name or ID
-* If your password contains special characters, wrap it in quotes:
+
+- If your password contains special characters, wrap it in quotes:
 
   ```bash
   -p "password"
@@ -44,8 +45,8 @@ If you want this adapted for **docker-compose**, **MongoDB Atlas**, or a differe
 
 If you’re seeing **“missing semicolon”**, that message is **not from Docker** — it usually comes from:
 
-* Running the command **inside `mongosh`** instead of your system shell, or
-* A **JavaScript context** (Mongo shell expects JS statements, which often end with `;`)
+- Running the command **inside `mongosh`** instead of your system shell, or
+- A **JavaScript context** (Mongo shell expects JS statements, which often end with `;`)
 
 ### Correct usage (important)
 
@@ -63,19 +64,19 @@ If you already opened `mongosh` and then typed:
 docker exec -it mongodb mongosh -u root -p password --authenticationDatabase admin
 ```
 
-MongoDB will complain about syntax (e.g., *missing semicolon*), because it’s trying to parse it as JavaScript.
+MongoDB will complain about syntax (e.g., _missing semicolon_), because it’s trying to parse it as JavaScript.
 
 ### What to do instead
 
 1. Exit `mongosh`:
 
    ```js
-   exit
+   exit;
    ```
-2. Run the `docker exec ...` command in:
 
-   * Terminal (macOS/Linux)
-   * PowerShell / CMD (Windows)
+2. Run the `docker exec ...` command in:
+   - Terminal (macOS/Linux)
+   - PowerShell / CMD (Windows)
 
 ### No semicolon needed
 
@@ -87,4 +88,3 @@ db.stats();
 ```
 
 If you want, paste the **exact error message** and where you ran the command (Terminal vs mongosh), and I’ll pinpoint it immediately.
-

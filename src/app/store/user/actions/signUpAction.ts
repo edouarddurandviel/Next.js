@@ -21,7 +21,7 @@ export default async function signUpAction(
     if (user && user.error) {
       const error = await errorMessages(user.error.details);
 
-      const nextState = { error: error, data: previousState!.data };
+      const nextState = { error: error, data: previousState!.user };
       return nextState;
     }
 

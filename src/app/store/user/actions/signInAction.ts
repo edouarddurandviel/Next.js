@@ -33,7 +33,6 @@ export default async function signInAction(formData: FormData) {
 
     if (fetchedUser) {
       if (await argon2.verify(fetchedUser.password, user.value.password)) {
-
         const payload = {
           userId: user.value.id,
           email: user.value.email,
@@ -59,8 +58,8 @@ export default async function signInAction(formData: FormData) {
           path: path,
         });
 
-        return { 
-          user: payload 
+        return {
+          user: payload,
         };
       } else {
         return {
