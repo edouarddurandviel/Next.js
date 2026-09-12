@@ -1,15 +1,19 @@
-import type { NextConfig } from "next";
-
-const nextConfig: NextConfig = {
-  /* config options here */
-   images: {
-    remotePatterns: [new URL('https://placehold.co/600x400/**')],
-    formats: ['image/avif', 'image/webp'],
-    minimumCacheTTL: 14400, // 4 hours
+/** @type {import("next").NextConfig} */
+const nextConfig = {
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "placehold.co",
+        pathname: "/600x400/**",
+      },
+    ],
+    formats: ["image/avif", "image/webp"],
+    minimumCacheTTL: 14400,
     qualities: [25, 50, 75, 100],
     maximumRedirects: 3,
     dangerouslyAllowSVG: true,
-    contentDispositionType: 'attachment',
+    contentDispositionType: "attachment",
     contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
     dangerouslyAllowLocalIP: true,
   },
